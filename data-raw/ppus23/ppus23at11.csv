@@ -1,0 +1,75 @@
+Bureau of Justice Statistics,,,,,,,,,,,,,
+Filename: ppus23at11.csv,,,,,,,,,,,,,
+"Appendix table 11. Adults on parole, by jurisdiction, 2023",,,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2023  NCJ 310118",,,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Parole Survey, 2023; and U.S. Census Bureau, National Intercensal Estimates, 2024",,,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov,,,,,,,,,,,,,
+Date of version: 7/22/25,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Appendix table 11. Adults on parole, by jurisdiction, 2023",,,,,,,,,,,,,
+,,,Entries,,,Exits,,"Parole population, December 31, 2023","Change, January 1, 2023–December 31, 2023",,,,
+Jurisdiction,,"Parole population, January 1, 2023",Reported,Imputed,,Reported,Imputed,,Number,Percent,,,"Number on parole per 100,000 adult U.S. residents, December 31, 2023/a"
+,U.S. total,"700,750","280,910","311,400",,"304,220","335,790","680,390","-20,370",-3,%,,258
+Federal,,"106,180","47,810","47,810",,"48,640","48,640","105,890",-300,-0.3,%,,40
+State,,"594,570","233,100","263,590",,"255,580","287,150","574,500","-20,070",-3.5,%,,218
+,Alabama,"7,400","2,800","2,800",,"3,330","3,330","6,870",-530,-7.8,,,172
+,Alaska/b,750,..,"1,270",,..,850,"1,170",420,36.2,,,209
+,Arizona,"6,640","8,940","8,940",,"8,790","8,790","6,790",150,2.2,,,115
+,Arkansas,"22,780","8,130","8,130",,"8,470","8,470","22,580",-200,-0.9,,,951
+,"California/c,d","45,000","19,340","19,340",,"24,290","24,290","40,090","-4,910",-12.3,,,131
+,Colorado,"9,050","5,610","5,610",,"5,470","5,470","9,180",140,1.5,,,196
+,Connecticut ,"2,170","1,870","1,870",,"1,390","1,390","2,660",490,18.3,,,92
+,Delaware,340,100,100,,130,130,310,-30,-8,,,38
+,District of Columbia,"2,010","1,200","1,200",,"1,950","1,950","1,690",-330,-19.4,,,303
+,Florida,"3,890","5,450","5,450",,"5,530","5,530","3,810",-80,-2.2,,,21
+,Georgia,"15,550","5,350","5,350",,"6,560","6,560","14,340","-1,210",-8.4,,,168
+,Hawaii ,"1,220",410,410,,490,490,"1,150",-70,-6.3,,,100
+,Idaho,"6,580","2,520","2,520",,"2,330","2,330","6,770",190,2.8,,,448
+,Illinois ,"20,240","14,670","14,670",,"18,370","18,370","16,970","-3,260",-19.2,,,172
+,Indiana,"6,340","5,060","5,060",,"4,140","4,140","6,260",-80,-1.3,,,118
+,Iowa ,"6,820","3,220","3,220",,"3,170","3,170","6,860",40,0.6,,,276
+,Kansas ,"5,550","4,260","4,260",,"4,260","4,260","5,550",0, --,,,246
+,Kentucky,"12,700","8,380","8,380",,"8,340","8,340","12,730",40,0.3,,,362
+,Louisiana,"18,230","12,490","12,490",,"12,320","12,320","18,400",170,0.9,,,525
+,Maine,~,~,~,,~,~,~,~,~,,,~
+,Maryland ,"8,170","2,490","2,490",,"3,620","3,620","9,710","1,550",15.9,,,201
+,Massachusetts,"1,670","1,880","1,880",,"1,860","1,860","1,690",20,1.4,,,30
+,Michigan/b,"9,700",..,"4,890",,..,"6,290","8,290","-1,410",-17,,,104
+,Minnesota,"6,770","4,190","4,190",,"4,280","4,280","6,680",-90,-1.4,,,150
+,Mississippi,"9,270","4,190","4,190",,"3,610","3,610","9,850",580,5.9,,,435
+,Missouri,"17,160","9,970","9,970",,"10,540","10,540","16,590",-570,-3.4,,,343
+,Montana,"1,210",490,490,,530,530,"1,170",-40,-3.5,,,129
+,Nebraska,890,830,830,,870,870,860,-40,-4.1,,,57
+,Nevada,"5,370","2,920","2,920",,"2,850","2,850","5,460",90,1.7,,,216
+,New Hampshire/b,"1,600",600,600,,690,690,"1,510",-90,-6,,,131
+,New Jersey,"15,640","3,850","3,850",,"3,950","3,950","15,550",-100,-0.6,,,213
+,New Mexico/b,"2,270",..,"1,550",,..,"1,600","2,230",-40,-2,,,133
+,New York,"25,630","8,870","8,870",,"10,410","10,410","24,090","-1,540",-6.4,,,154
+,North Carolina ,"9,690","9,910","9,910",,"10,610","10,610","10,140",450,4.4,,,118
+,North Dakota,720,970,970,,920,920,760,40,5.5,,,127
+,Ohio,"19,150","10,750","10,750",,"13,420","13,420","16,480","-2,680",-16.2,,,179
+,Oklahoma ,"2,490",670,670,,830,830,"2,330",-160,-6.9,,,75
+,Oregon,"20,970","5,510","5,510",,"6,750","6,750","20,450",-520,-2.6,,,600
+,Pennsylvania ,"75,630","8,170","27,530",,"10,870","29,330","73,830","-1,800",-2.4,,,714
+,Rhode Island,370,200,200,,190,190,380,10,2.1,,,42
+,South Carolina,"3,460","1,870","1,870",,"2,050","2,050","3,280",-180,-5.5,,,77
+,South Dakota,"3,340","2,370","2,370",,"2,320","2,320","3,390",50,1.6,,,483
+,Tennessee,"12,560","3,120","3,120",,"3,410","3,410","12,260",-300,-2.4,,,219
+,Texas,"100,600","26,260","26,260",,"28,620","28,620","98,230","-2,370",-2.4,,,424
+,Utah,"3,820","2,830","2,830",,"3,050","3,050","3,600",-220,-6,,,144
+,Vermont/b,750,..,380,,..,410,730,-30,-3.7,,,136
+,Virginia ,"1,770",130,130,,330,330,"1,580",-200,-12.4,,,23
+,Washington/b,"10,780",..,"3,050",,..,"3,970","9,870",-920,-9.3,,,159
+,West Virginia,"3,990","2,570","2,570",,"2,540","2,540","4,020",20,0.6,,,283
+,Wisconsin/c,"22,510","6,390","6,390",,"5,780","5,780","22,010",-500,-2.3,,,470
+,Wyoming ,820,500,500,,490,490,830,10,1.4,,,182
+"Note: Details may not sum to totals due to rounding. Due to nonresponse or incomplete data, the parole population for some jurisdictions on December 31, 2023, does not equal the population on January 1, 2023, plus entries, minus exits. Counts may not be actual as reporting agencies may provide estimates on some or all detailed data.",,,,,,,,,,,,,
+..Not known.,,,,,,,,,,,,,
+--Less than 0.05%.,,,,,,,,,,,,,
+~Not applicable. Maine no longer has a parole program and was removed from the Annual Parole Survey for 2023.,,,,,,,,,,,,,
+"a/Rates were calculated using U.S. Census Bureau estimates of U.S. residents age 18 or older for January 1, 2024, in each jurisdiction.",,,,,,,,,,,,,
+b/Imputed counts differ from reported counts in jurisdictions where data were not available. BJS imputed where data were not available. See Methodology.,,,,,,,,,,,,,
+c/Data for parole entries and exits are subject to fluctuation. See Parole: Explanatory notes for 2023 for details.,,,,,,,,,,,,,
+d/California parole data are not comparable prior to 2022. See Methodology.,,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Parole Survey, 2023; and U.S. Census Bureau, National Intercensal Estimates, 2024.",,,,,,,,,,,,,

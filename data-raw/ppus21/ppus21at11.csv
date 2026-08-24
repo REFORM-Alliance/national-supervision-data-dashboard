@@ -1,0 +1,73 @@
+﻿Bureau of Justice Statistics,,,,,,,,,,,,
+Filename: ppus21at11.csv,,,,,,,,,,,,
+"Appendix table 11. Adults exiting parole, by type of exit and jurisdiction, 2021",,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2021  NCJ 305589",,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Parole Survey, 2021",,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov 202-307-0765,,,,,,,,,,,,
+Date of version: 2/23/2023,,,,,,,,,,,,
+,,,,,,,,,,,,
+"Appendix table 11. Adults exiting parole, by type of exit and jurisdiction, 2021",,,,,,,,,,,,
+,,,,Returned to incarceration,,,,Unsatisfactory exit other than returned to incarceration,,,,
+Jurisdiction,,Total reported,Completion,With new sentence,With revocation,To receive treatment,Other/unknown,Absconder,Other unsatisfactory/a,Death,Other/b,Unknown/not reported
+,U.S. total,"372,569","205,821","18,983","54,572","1,061","8,828","5,980","3,111","8,925","7,158","58,040"
+Federal,,"49,185","28,328",0,"10,432",0,0,1,286,"1,325",0,"8,813"
+State,,"323,384","177,493","18,983","44,140","1,061","8,828","5,979","2,825","7,600","7,158","49,227"
+,Alabama/c,"5,106","2,409","1,140",374,~,~,~,~,201,982,0
+,Alaska,..,..,..,..,..,..,..,..,..,..,..
+,Arizona/c,"9,715","6,973",49,"2,494",0,0,41,17,141,0,0
+,Arkansas/c,"9,907","4,135",704,"4,745",0,0,0,0,317,6,0
+,California/c,"23,959",..,..,..,..,..,..,..,..,..,"23,959"
+,Colorado,"7,117","5,465",662,779,0,0,11,0,188,12,0
+,Connecticut/c,"3,046","2,191",110,29,115,601,0,~,..,~,0
+,Delaware/c,155,33,3,2,..,..,..,1,8,108,0
+,District of Columbia,950,505,66,93,~,66,2,60,34,124,0
+,Florida,"5,439","3,285",338,688,0,0,0,0,2,963,163
+,Georgia,"9,258","6,913",106,14,~,"2,026",0,0,199,0,0
+,Hawaii/c,680,~,~,408,~,~,118,~,23,131,0
+,Idaho/c,"2,428",805,747,185,1,90,265,~,61,274,0
+,Illinois/c,"17,460","12,234",178,"4,046",~,~,54,~,387,561,0
+,Indiana/c,"4,156","2,611",239,674,0,0,541,0,49,42,0
+,Iowa,"3,502","1,809",758,567,0,0,0,300,68,0,0
+,Kansas,"3,671","2,604",137,458,0,2,266,0,59,145,0
+,Kentucky,"8,759","5,657",177,"1,001",0,1,"1,682",0,241,0,0
+,Louisiana/c,"13,313","7,452","1,323",539,~,782,..,843,325,"2,049",0
+,Maine,..,..,..,..,..,..,..,..,..,..,..
+,Maryland,"3,408","2,193",206,77,..,~,..,555,149,3,225
+,Massachusetts,"1,583","1,110",72,302,0,0,0,70,25,4,0
+,Michigan,"8,308","6,267",740,"1,078",0,0,0,0,223,0,0
+,Minnesota/c,"4,290","2,631",286,"1,273",0,0,0,0,100,0,0
+,Mississippi/c,"5,116","2,904",416,"1,180",~,441,~,~,68,107,0
+,Missouri,"14,185","6,071","1,019","2,451",550,"1,360","1,457",0,427,0,850
+,Montana,755,390,60,276,0,6,0,0,23,0,0
+,Nebraska,"1,097",687,0,393,0,0,0,0,7,10,0
+,Nevada/c,"3,545","3,103",346,~,~,~,~,~,96,~,0
+,New Hampshire/c,741,40,258,42,128,~,110,~,15,58,~
+,New Jersey/c,"2,890","1,673",60,819,0,0,~,0,189,149,0
+,New Mexico,"1,597",617,26,882,0,14,0,0,58,0,0
+,New York,"16,183","12,248",760,"2,410",267,0,~,~,498,~,0
+,North Carolina/c,"11,717","8,223",696,900,~,~,"1,309",93,170,326,0
+,North Dakota/c,868,604,..,..,..,232,..,~,11,21,0
+,Ohio,"10,857","6,546","1,701","2,610",~,0,..,..,..,~,0
+,Oklahoma/c,684,663,~,~,~,~,~,~,12,9,0
+,Oregon,"6,931","4,251",638,950,0,0,7,593,227,114,151
+,Pennsylvania/c,"35,034","5,347","1,913","2,927",0,0,0,204,529,547,"23,567"
+,Rhode Island/c,72,50,..,7,~,~,..,7,7,..,1
+,South Carolina,"2,661","2,369",21,172,0,0,0,0,75,24,0
+,South Dakota,"2,178","1,233",200,577,~,26,0,~,35,107,0
+,Tennessee,"3,561","2,063",663,567,0,0,0,0,268,0,0
+,Texas,"34,894","28,129","1,127","3,559",~,288,~,~,"1,588",9,194
+,Utah,"3,351",680,425,"2,014",0,0,4,79,57,92,0
+,Vermont,..,..,..,..,..,..,..,..,..,..,..
+,Virginia,540,411,96,24,..,..,..,..,8,..,1
+,Washington/c,"6,810","5,764",451,463,~,~,~,~,132,~,0
+,West Virginia,"3,129","1,787",37,992,0,0,106,0,45,162,0
+,Wisconsin,"7,199","3,926",..,..,..,"2,893",..,..,245,19,116
+,Wyoming,579,432,29,99,0,0,6,3,10,0,0
+Note: Based on reported data only. See appendix table 10 for imputed exits from parole. Counts may not be actual as reporting agencies may provide estimates on some or all detailed data.,,,,,,,,,,,,
+..Not known. ,,,,,,,,,,,,
+~Not applicable.,,,,,,,,,,,,
+"a/Includes persons discharged because they were released to special sentence. Also includes closure due to deportation, pending parole institutional hearing, other revocations, other unsuccessful discharges, and early terminations.",,,,,,,,,,,,
+"b/Includes 1,769 adults on parole who were transferred to another state and 5,389 who exited for other reasons.",,,,,,,,,,,,
+c/Some or all data are estimates.,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Parole Survey, 2021.",,,,,,,,,,,,

@@ -1,0 +1,72 @@
+﻿Bureau of Justice Statistics,,,,,,,,,,,,,
+Filename: ppus21at07.csv,,,,,,,,,,,,,
+"Appendix table 7. Adults exiting probation, by type of exit and jurisdiction, 2021",,,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2021  NCJ 305589",,,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Probation Survey, 2021",,,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov 202-307-0765,,,,,,,,,,,,,
+Date of version: 2/23/2023,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Appendix table 7. Adults exiting probation, by type of exit and jurisdiction, 2021",,,,,,,,,,,,,
+,,,,Incarcerated,,,,Unsatisfactory reason other than incarceration,,,,,
+Jurisdiction,,Total reported,Completion,With new sentence,Under current sentence,To receive treatment,Other/unknown,Absconder,Discharged to warrant/detainer,Other unsatisfactory/a,Death,Other/b,Unknown/not reported
+,U.S. total,"1,501,320","654,410","51,010","73,310","1,890","26,170","42,970","9,520","36,270","19,470","118,370","467,930"
+Federal,,"6,130","5,040",0,590,0,0,0,0,50,100,0,350
+State,,"1,495,190","649,370","51,010","72,730","1,890","26,170","42,970","9,520","36,220","19,370","118,370","467,580"
+,Alabama/c,"13,950","9,670","1,400",440,..,..,50,100,20,490,"1,780",0
+,Alaska/c,"3,700",750,"1,750","1,040",..,..,610,..,..,30,..,..
+,Arizona,"20,090","15,080",..,"3,210",..,"1,120",..,..,..,600,80,0
+,Arkansas/c,"10,680","6,750",740,"2,360",390,0,0,0,0,370,70,0
+,California/c,"101,920",..,..,..,..,..,..,..,..,..,..,"101,920"
+,Colorado/c,"47,330","28,840",160,540,0,"4,430","7,130",0,210,510,"4,570",940
+,Connecticut/c,"16,210","11,600",280,530,..,..,310,"3,070",..,..,410,0
+,Delaware,"6,050","4,460",160,430,..,..,..,..,510,120,360,0
+,District of Columbia/c,"2,340","1,260",80,70,..,140,0,0,640,60,60,20
+,Florida/c,"106,320","65,720","10,630","12,680",10,530,180,"1,960","2,960","1,440","3,590","6,610"
+,Georgia/c,"175,690","33,820","2,700","1,050",..,0,"1,540",..,..,980,..,"135,590"
+,Hawaii,"3,980","2,840",160,470,0,420,0,0,0,80,10,0
+,Idaho/c,"10,240","3,190",870,820,210,90,..,..,..,120,..,"4,940"
+,Illinois/c,"67,460","38,180",..,..,..,320,"4,610",..,"5,550",..,"10,520","8,280"
+,Indiana/c,"78,880","45,800","8,280","7,760",..,..,"8,940",..,..,..,"8,090",0
+,Iowa,"11,090","7,970",990,200,0,0,0,0,"1,760",160,10,0
+,Kansas/c,"13,150","9,650",..,"1,740",..,..,"1,760",..,..,..,..,0
+,Kentucky/c,"16,700","10,660",900,"2,660",0,10,"1,770",0,10,610,70,0
+,Louisiana/c,"13,030","8,110","1,170","1,720",..,0,..,..,"1,780",240,20,0
+,Maine/c,"2,570","2,170",..,..,..,340,0,0,0,70,0,0
+,Maryland,"26,060","15,290","1,850","1,110",..,..,..,..,"4,300",610,30,"2,870"
+,Massachusetts,"32,790",..,..,..,..,..,..,..,..,..,..,"32,790"
+,Michigan/c,"54,910","31,230",630,"1,240",60,0,20,120,760,480,80,"20,280"
+,Minnesota,"40,570",..,..,..,..,..,..,..,..,..,..,"40,570"
+,Mississippi,"6,880","4,080",590,"1,310",..,330,..,..,..,70,470,20
+,Missouri,"21,790","12,380",680,"1,940",490,10,"5,760",0,0,530,0,0
+,Montana/c,"4,000","1,940",280,480,0,0,0,0,0,100,0,"1,200"
+,Nebraska/c,"9,750","6,840","1,740",..,..,..,..,..,920,80,170,0
+,Nevada/c,"4,580","3,380","1,130",..,..,..,..,..,..,70,..,0
+,New Hampshire/c,650,250,110,90,60,0,60,40,0,20,30,0
+,New Jersey/c,"28,750","19,520",..,..,..,..,30,..,..,"2,830",..,"6,380"
+,New Mexico,"5,550","5,020",0,0,0,..,30,10,..,90,0,410
+,New York,"23,030","15,900",..,..,..,..,..,..,..,430,..,"6,700"
+,North Carolina/c,"42,100","16,240","2,410","3,280",..,..,"5,200",..,"8,750",960,"5,270",0
+,North Dakota/c,"3,650","2,090",..,..,..,..,..,..,310,60,"1,190",0
+,Ohio/c,"94,980","43,690","2,810","5,000",670,880,"4,150","3,200","4,620","1,230","1,980","26,760"
+,Oklahoma/c,"10,650","9,290",410,500,..,..,..,..,30,70,..,360
+,Oregon,"10,080","5,610",390,"2,000",0,0,160,0,110,170,"1,650",0
+,Pennsylvania/c,"68,080","1,900",190,260,0,0,0,20,490,100,0,"65,110"
+,Rhode Island/c,"3,880","3,690",10,0,..,30,..,..,20,120,..,10
+,South Carolina,"11,990","9,860",270,"1,450",0,0,0,0,0,380,40,0
+,South Dakota/c,"3,060","2,200",..,..,..,..,..,..,870,..,..,0
+,Tennessee/c,"16,330","11,160","1,670","2,250",0,0,0,0,0,900,0,340
+,Texas/c,"169,510","66,610",..,"12,400",..,"12,320",..,..,20,"2,420","75,750",0
+,Utah,"4,870","2,130",350,280,0,0,60,0,"1,030",90,920,0
+,Vermont,..,..,..,..,..,..,..,..,..,..,..,..
+,Virginia/c,"27,760","21,660","4,620",..,..,..,..,..,..,"1,060",420,0
+,Washington/c,"22,680","13,920",320,530,0,10,470,990,450,190,0,"5,800"
+,West Virginia/c,"5,200","1,480",150,400,..,"2,110",50,..,60,130,670,150
+,Wisconsin,"17,240","13,810",..,..,..,..,..,..,..,270,60,0
+,Wyoming,"2,460","1,690",140,470,0,0,70,0,40,50,0,0
+Note: Based on reported data only. Details may sum to totals due to rounding. See appendix table 6 for imputed exits from probation. Counts may not be actual as reporting agencies may provide estimates on some or all detailed data.,,,,,,,,,,,,,
+..Not known.,,,,,,,,,,,,,
+a/Includes adults on probation who were discharged from supervision when they did not complete the conditions of probation or fulfill obligations.,,,,,,,,,,,,,
+"b/Includes 14,262 adults on probation who transferred to another jurisdiction and 104,107 who exited supervision for other reasons, including administrative closure; appeal; deportation; discharge from pretrial supervision; dismissed cases; duplicate numbers; expired cases; transfer to non-reporting probation; and discharges that could not be reported, classified, or tracked by agencies.",,,,,,,,,,,,,
+c/Some or all data were estimates.,,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Probation Survey, 2021.",,,,,,,,,,,,,

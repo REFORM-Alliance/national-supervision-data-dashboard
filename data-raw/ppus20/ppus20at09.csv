@@ -1,0 +1,73 @@
+Bureau of Justice Statistics,,,,,,,,,,,,,
+Filename: ppus20at09.csv,,,,,,,,,,,,,
+"Appendix table 9. Adults on parole, 2020",,,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2020   NCJ 303102",,,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Parole Survey, 2020; and U.S. Census Bureau, National Intercensal Estimates, 2021",,,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov 202-307-0765,,,,,,,,,,,,,
+Date of version: 12/16/2021,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Appendix table 9. Adults on parole, 2020",,,,,,,,,,,,,
+,,,Entries,,Exits,,,,"Change, January 1, 2020–December 31, 2020/b",,,,
+Jurisdiction,,"Parole population, January 1, 2020",Reported,Estimated/a,Reported,Estimated/a,,"Parole population, December 31, 2020",Number,Percent,,,"Number on parole per 100,000 adult U.S. residents, December 31, 2020/b"
+,U.S. total,"850,964","370,501","392,400","369,528","388,400",,"862,113","11,149",1.3,%,,335
+Federal,,"108,343","45,105","45,105","46,820","46,820",,"107,922",-421,-0.4,%,,42
+State,,"742,621","325,396","347,300","322,708","341,600",,"754,191","11,570",1.6,%,,293
+,Alabama,"9,223","3,149","3,149","4,127","4,127",,"8,245",-978,-10.6,,,214
+,Alaska/c,"1,163",..,400,..,600,,"1,003",-160,-13.8,,,182
+,Arizona,"7,043","9,081","9,081","9,237","9,237",,"6,887",-156,-2.2,,,118
+,Arkansas,"24,976","10,761","10,761","10,147","10,147",,"25,852",876,3.5,,,"1,106"
+,California/d,"107,139","23,959","45,000","23,959","41,800",,"110,349","3,210",3,,,361
+,Colorado,"11,155","8,465","8,465","7,336","7,336",,"12,284","1,129",10.1,,,268
+,Connecticut/c ,"3,601","2,636","2,636","2,157","2,157",,"4,080",479,13.3,,,144
+,Delaware,362,132,132,121,121,,373,11,3,,,47
+,District of Columbia,"2,595",920,920,968,968,,"2,547",-48,-1.8,,,436
+,Florida,"4,349","5,845","5,845","5,914","5,914",,"4,280",-69,-1.6,,,24
+,Georgia,"19,241","9,705","9,705","9,583","9,583",,"19,447",206,1.1,,,236
+,Hawaii ,"1,513","1,088","1,088",578,578,,"1,544",31,2,,,139
+,Idaho,"5,121","2,963","2,963","2,117","2,117",,"5,967",846,16.5,,,428
+,Illinois ,"26,251","17,713","17,713","19,220","19,220",,"24,744","-1,507",-5.7,,,253
+,Indiana,"6,050","4,362","4,362","4,276","4,276",,"6,136",86,1.4,,,118
+,Iowa ,"6,999","3,959","3,959","3,697","3,697",,"7,261",262,3.7,,,297
+,Kansas ,"5,530","3,954","3,954","4,056","4,056",,"5,428",-102,-1.8,,,244
+,Kentucky,"14,977","9,097","9,097","9,645","9,645",,"14,429",-548,-3.7,,,414
+,Louisiana,"23,582","12,920","12,920","14,936","14,936",,"21,566","-2,016",-8.5,,,605
+,Maine,19,0,0,1,1,,18,-1,-5.3,,,2
+,Maryland ,"9,669","3,664","3,664","3,843","3,843",,"9,490",-179,-1.9,,,201
+,Massachusetts/c,"1,382","2,099","2,099","2,165","2,165",,"1,316",-66,-4.8,,,24
+,Michigan,"13,488","8,630","8,630","8,657","8,657",,"13,461",-27,-0.2,,,172
+,Minnesota,"7,243","5,085","5,085","4,969","4,969",,"7,359",116,1.6,,,169
+,Mississippi,"10,432","5,408","5,408","5,330","5,330",,"10,510",78,0.7,,,462
+,Missouri,"21,507","13,688","13,688","14,466","14,466",,"20,729",-778,-3.6,,,433
+,Montana,"1,512",855,855,684,684,,"1,683",171,11.3,,,197
+,Nebraska,956,"1,221","1,221","1,023","1,023",,"1,156",200,20.9,,,79
+,Nevada,"7,086",..,..,"4,329","4,329",,"9,222","2,136",30.1,,,374
+,New Hampshire,"2,250",625,625,795,795,,"1,882",-368,-16.4,,,168
+,New Jersey,"15,194","5,488","5,488","5,166","5,166",,"15,516",322,2.1,,,223
+,New Mexico,"2,608","2,075","2,075","1,588","1,588",,"2,725",117,4.5,,,166
+,New York,"44,917","15,157","15,157","16,095","16,095",,"43,979",-938,-2.1,,,287
+,North Carolina ,"13,820","13,216","13,216","13,617","13,617",,"13,419",-401,-2.9,,,161
+,North Dakota,767,960,960,"1,003","1,003",,724,-43,-5.6,,,124
+,Ohio,"21,832","11,877","11,877","10,940","10,940",,"22,769",937,4.3,,,249
+,Oklahoma ,"1,959",761,761,483,483,,"2,237",278,14.2,,,74
+,Oregon,"24,183","8,723","8,723","9,074","9,074",,"23,832",-351,-1.5,,,702
+,Pennsylvania/c ,"84,592","28,372","28,372","24,701","24,701",,"88,263","3,671",4.3,,,868
+,Rhode Island,557,250,250,188,188,,619,62,11.1,,,72
+,South Carolina,"4,638","2,619","2,619","2,651","2,651",,"4,638",0,0,,,112
+,South Dakota,"3,452","2,516","2,516","2,295","2,295",,"3,673",221,6.4,,,543
+,Tennessee,"10,993","4,562","4,562","3,148","3,148",,"12,407","1,414",12.9,,,230
+,Texas,"109,159","35,197","35,197","33,919","33,919",,"110,437","1,278",1.2,,,500
+,Utah,"4,061","3,507","3,507","3,135","3,135",,"4,433",372,9.2,,,189
+,Vermont,875,..,400,..,400,,909,34,3.9,,,178
+,Virginia ,"1,860",660,660,503,503,,"2,017",157,8.4,,,30
+,Washington,"13,427","5,742","5,742","4,633","4,633",,"14,536","1,109",8.3,,,240
+,West Virginia,"4,090","3,001","3,001","3,409","3,409",,"3,682",-408,-10,,,258
+,Wisconsin,"22,292","7,988","7,988","7,106","7,106",,"23,174",882,4,,,505
+,Wyoming ,931,741,741,718,718,,954,23,2.5,,,212
+"Note: Data quality may vary across jurisdictions for counts of entries and exits. Therefore, the population on December 31, 2020 does not equal the population on January 1, 2020 plus entries, minus exits. Counts may not be actual as reporting agencies may provide estimates on some or all detailed data. Rates are based on the parole population counts as of December 31 of the reporting year and were calculated using U.S. Census Bureau estimates of the U.S. resident population of persons age 18 or older for January 1 of the following year.",,,,,,,,,,,,,
+..Not known.,,,,,,,,,,,,,
+a/Reported data will equal estimated data in cases where no imputation was required.,,,,,,,,,,,,,
+"b/Rates were calculated using the estimated adult U.S. resident population in each jurisdiction on January 1, 2021. ",,,,,,,,,,,,,
+c/See Parole: Explanatory notes for 2020 for more details.,,,,,,,,,,,,,
+"d/Includes adults on Post-Release Community Supervision and Mandatory Supervision: 45,899 on January 1, 2020 and 55,216 on December 31, 2020, with 28,324 entries and 31,699 exits.",,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Parole Survey, 2020; and U.S. Census Bureau, National Intercensal Estimates, 2021.",,,,,,,,,,,,,

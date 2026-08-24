@@ -1,0 +1,74 @@
+Bureau of Justice Statistics,,,,,,,,,,,,,
+Filename: ppus15at6.csv,,,,,,,,,,,,,
+"Appendix Table 6. Adults exiting parole, by type of exit, 2015",,,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2015   NCJ 250230",,,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Parole Survey, 2015.",,,,,,,,,,,,,
+Authors:  Danielle Kaeble and Thomas P. Bonczar,,,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov or 202-307-0765,,,,,,,,,,,,,
+Date of version: 12/21/2016,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Appendix Table 6. Adults exiting parole, by type of exit, 2015",,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,Returned to incarceration,,,,,Unsatisfactory Reason Other than Incarceration,,,,
+Jurisdiction,,Total reported,Completion,With new sentence ,With revocation ,To receive treatment ,,Other/unknown,Absconder,Other unsatisfactory/a,Death,Other/b,Unknown or not reported
+,U.S. total,"388,789","239,440","29,003","65,649","2,594",,"10,841","9,351","5,574","5,876","13,894","6,567"
+Federal,,"46,315","28,387",1,"9,605",0,,0,"1,946",264,702,0,"5,410"
+State,,"342,474","211,053","29,002","56,044","2,594",,"10,841","7,405","5,310","5,174","13,894","1,157"
+,Alabama,"2,287","1,407",429,177,..,,..,..,..,112,162,0
+,Alaska ,..,..,..,..,..,,..,..,..,..,..,..
+,Arizona,"12,069","7,100",11,"2,698",0,,0,0,"2,130",56,74,0
+,Arkansas†,"9,213","3,170",216,"5,592",0,,0,0,0,195,40,0
+,California,..,..,..,..,..,,..,..,..,..,..,..
+,Colorado,"8,167","3,928",780,"3,317",0,,0,0,0,72,70,0
+,Connecticut,"2,112","1,078",0,0,0,,895,139,0,0,0,0
+,Delaware†,282,136,4,20,..,,..,..,19,3,100,0
+,District of Columbia,"1,996",944,0,0,0,,566,0,219,93,174,0
+,Florida,"6,240","4,117",360,798,..,,~,~,..,3,727,235
+,Georgia†,"11,696","8,907",312,"1,318",..,,924,87,0,148,0,0
+,Hawaii†,897,292,0,333,0,,0,147,0,14,111,0
+,Idaho†,"2,037",720,..,572,4,,651,13,..,31,46,0
+,Illinois,"24,328","13,873","1,544","6,758",~,,~,887,0,126,859,281
+,Indiana,"7,876","3,654",487,"1,339",0,,0,"1,828",0,77,491,0
+,Iowa,"3,411","1,803",424,"1,003",0,,0,2,138,40,1,0
+,Kansas ,"3,677","3,043",124,0,0,,51,302,0,36,121,0
+,Kentucky†,"11,417","5,769",558,"2,049",~,,"2,889",0,~,152,0,0
+,Louisiana†,"15,590","7,094","1,472",881,~,,"1,427",~,"1,587",188,"2,941",0
+,Maine ,0,..,..,..,..,,..,..,..,..,..,..
+,Maryland,"5,340","2,988",615,716,..,,~,..,655,108,31,227
+,Massachusetts†,"2,254","1,741",78,401,0,,18,0,0,16,0,0
+,Michigan†,"11,125","7,951","1,159","1,854",~,,~,~,~,161,~,0
+,Minnesota ,"6,182","3,210",327,"2,613",0,,0,0,0,32,0,0
+,Mississippi ,"7,382","5,027",984,0,..,,"1,101",7,0,42,153,68
+,Missouri,"13,786","5,348","1,019","3,873",763,,"1,117","1,452",..,202,..,12
+,Montana,586,316,25,217,0,,0,0,0,19,9,0
+,Nebraska ,"1,454","1,071",58,301,0,,0,0,0,7,3,14
+,Nevada†,"4,922","3,560",465,255,~,,538,52,~,52,~,0
+,New Hampshire,"1,437",663,0,774,0,,0,0,0,0,0,0
+,New Jersey,"5,586","3,809",79,"1,479",~,,0,~,0,117,102,0
+,New Mexico,944,872,..,..,..,,59,..,..,13,..,0
+,New York ,"20,249","10,502","1,276","6,399","1,827",,0,0,~,245,~,0
+,North Carolina†,"10,905","8,176",813,411,~,,0,"1,300",132,73,~,0
+,North Dakota ,"1,189",793,54,313,..,,0,23,..,5,0,1
+,Ohio,"6,814","4,731","1,410",116,0,,0,221,0,156,180,0
+,Oklahoma,789,741,9,8,0,,0,0,0,31,0,0
+,Oregon,..,..,..,..,..,,..,..,..,..,..,..
+,Pennsylvania†,"63,263","42,616","6,286","5,136",0,,0,781,251,789,"7,404",0
+,Rhode Island,204,154,4,38,0,,0,0,0,8,0,0
+,South Carolina ,"2,641","2,310",43,183,0,,0,0,0,45,60,0
+,South Dakota†,"1,572",898,143,498,~,,8,0,~,25,0,0
+,Tennessee†,"4,573","2,621","1,044",770,0,,0,0,0,138,0,0
+,Texas,"35,354","27,504","4,790",815,~,,597,~,~,"1,335",~,313
+,Utah ,"2,058",465,228,"1,159",0,,0,0,173,25,8,0
+,Vermont,..,..,..,..,..,,..,..,..,..,..,..
+,Virginia,667,418,162,51,0,,0,0,0,9,26,1
+,Washington,"5,725","4,073","1,134",441,0,,0,0,0,77,0,0
+,West Virginia†,"1,654","1,152",50,258,0,,0,164,0,30,0,0
+,Wisconsin/c,65,..,..,..,..,,..,..,..,65,..,..
+,Wyoming ,459,308,26,110,0,,0,0,6,3,1,5
+..Not known.,,,,,,,,,,,,,
+~Not applicable. ,,,,,,,,,,,,,
+†Some or all data are estimates.,,,,,,,,,,,,,
+"a/Includes individuals who were discharged because of release to special sentence, violations, deportations, incarceration, and revocations. Includes some early terminations and expirations of sentence.",,,,,,,,,,,,,
+"b/Includes 1,909 parolees who were transferred to another state and 11,985 parolees who exited for other reasons. Other reasons include parolees who were deported, had their sentence overturned by the court through an appeal, were transferred to another state or jurisdiction, were discharged to probation supervision or federal custody, or received a pardon. Also includes individuals with an administrative discharge or who became inactive, or were discharged due to a pending waiver, reversal, detainer, or warrant.",,,,,,,,,,,,,
+c/The only exits reported were deaths.,,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Parole Survey, 2015.",,,,,,,,,,,,,

@@ -1,0 +1,76 @@
+Bureau of Justice Statistics,,,,,,,,,,,,,
+Filename: ppus22at10.csv,,,,,,,,,,,,,
+"Appendix table 10. Adults on parole, by jurisdiction, 2022",,,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2022  NCJ 308575",,,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Parole Survey, 2022; and U.S. Census Bureau, National Intercensal Estimates, 2023",,,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov 202-307-0765,,,,,,,,,,,,,
+Date of version: 5/30/24,,,,,,,,,,,,,
+Date of revision: 8/22/24,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Appendix table 10. Adults on parole, by jurisdiction, 2022",,,,,,,,,,,,,
+,,,Entries,,,Exits,,,,"Change, January 1, 2022–December 31, 2022",,,
+Jurisdiction,,"Parole population, January 1, 2022",Reported,Imputed,,Reported,Imputed,,"Parole population, December 31, 2022",Number,Percent,,"Number on parole per 100,000 adult U.S. residents, December 31, 2022/a"
+,U.S. total,"745,270","318,330","319,200",,"342,540","365,700",,"698,820","-46,450",-6.2,%,267
+Federal,,"105,120","48,580","48,580",,"49,540","49,540",,"105,820",700,0.7,%,40
+State,,"640,150","269,740","270,600",,"293,000","316,200",,"593,000","-47,150",-7.4,%,226
+,Alabama,"7,820","3,380","3,380",,"3,790","3,790",,"7,400",-410,-5.3,,186
+,Alaska/b,870,..,300,,..,400,,750,-120,-13.8,,134
+,Arizona,"7,020","9,460","9,460",,"9,850","9,850",,"6,640",-390,-5.5,,114
+,Arkansas,"23,790","8,230","8,230",,"9,200","9,200",,"22,780","-1,010",-4.3,,965
+,"California/c,d","52,350","20,390","20,390",,"27,840","27,840",,"44,980","-7,380",-14.1,,147
+,Colorado,"10,540","4,520","4,520",,"6,010","6,010",,"9,050","-1,500",-14.2,,195
+,Connecticut ,"2,640","2,080","2,080",,"2,420","2,420",,"2,300",-340,-12.9,,79
+,Delaware,340,110,110,,110,110,,340,-10,-2,,41
+,District of Columbia,"2,250",560,560,,990,990,,"1,820",-430,-19.2,,331
+,Florida,"3,970","5,360","5,360",,"5,440","5,440",,"3,890",-80,-2,,21
+,Georgia,"17,120","5,920","5,920",,"7,580","7,580",,"15,460","-1,660",-9.7,,183
+,Hawaii ,"1,370",640,640,,640,640,,"1,240",-130,-9.4,,108
+,Idaho,"6,920","2,180","2,180",,"2,420","2,420",,"6,640",-290,-4.1,,444
+,Illinois ,"22,000","13,990","13,990",,"16,020","16,020",,"20,230","-1,770",-8,,205
+,Indiana,"5,740","4,640","4,640",,"4,020","4,020",,"6,340",600,10.4,,120
+,Iowa ,"6,340","3,440","3,440",,"2,900","2,900",,"6,880",540,8.5,,277
+,Kansas ,"5,060","3,350","3,350",,"3,350","3,350",,"5,130",70,1.4,,228
+,Kentucky,"13,310","7,510","7,510",,"8,190","8,190",,"12,630",-680,-5.1,,359
+,Louisiana,"19,090","12,400","12,400",,"12,530","12,530",,"18,960",-130,-0.7,,538
+,Maine,~,~,~,,~,~,,~,~,~,,~
+,Maryland ,"8,800","2,570","2,570",,"3,200","3,200",,"8,170",-630,-7.2,,170
+,Massachusetts,"1,450","1,790","1,790",,"1,590","1,590",,"1,660",210,14.4,,29
+,Michigan,"11,350","5,710","5,710",,"7,360","7,360",,"9,700","-1,650",-14.5,,123
+,Minnesota,"6,980","3,960","3,960",,"4,160","4,160",,"6,770",-210,-3,,153
+,Mississippi,"10,970","3,550","3,550",,"5,250","5,250",,"9,270","-1,700",-15.5,,411
+,Missouri,"18,230","11,010","11,010",,"12,100","12,100",,"17,140","-1,090",-6,,356
+,Montana,"1,390",420,420,,580,580,,"1,220",-170,-12.1,,137
+,Nebraska,940,940,940,,940,940,,940,0,--,,63
+,Nevada,"5,280","5,280","5,280",,"2,810","2,810",,"5,370",90,1.6,,215
+,New Hampshire/b,"1,500",..,200,,0,0,,"1,650",160,10.4,,144
+,New Jersey,"15,350","3,410","3,410",,"3,140","3,140",,"15,610",270,1.7,,215
+,New Mexico,"2,320","1,580","1,580",,"1,430","1,430",,"2,270",-50,-1.9,,137
+,New York,"39,800","9,300","9,300",,"23,470","23,470",,"25,630","-14,170",-35.6,,164
+,North Carolina ,"9,720","9,490","9,490",,"10,100","10,100",,"9,710",-20,-0.2,,115
+,North Dakota,650,870,870,,"1,070","1,070",,720,70,10.5,,120
+,Ohio,"21,480","10,850","10,850",,"13,170","13,170",,"19,150","-2,330",-10.8,,208
+,Oklahoma ,"2,370",890,890,,760,760,,"2,500",130,5.5,,81
+,Oregon,"22,390","5,380","5,380",,"6,270","6,270",,"21,500",-890,-4,,633
+,Pennsylvania ,"80,640","31,700","31,700",,"14,490","36,700",,"75,630","-5,010",-6.2,,732
+,Rhode Island,440,160,160,,220,220,,380,-60,-13.2,,43
+,South Carolina,"3,980","1,910","1,910",,"2,380","2,380",,"3,510",-470,-11.8,,84
+,South Dakota,"3,600","2,090","2,090",,"2,330","2,330",,"3,360",-250,-6.8,,485
+,Tennessee,"12,760","3,300","3,300",,"3,430","3,430",,"12,630",-130,-1,,229
+,Texas,"104,280","28,400","28,400",,"32,080","32,080",,"100,600","-3,680",-3.5,,443
+,Utah,"3,860","3,070","3,070",,"3,110","3,110",,"3,820",-40,-1,,155
+,Vermont/b,840,..,400,,..,500,,730,-110,-13.1,,137
+,Virginia ,"1,920",190,190,,330,330,,"1,770",-150,-7.6,,26
+,Washington,"11,790","3,330","3,330",,"4,330","4,330",,"10,780","-1,000",-8.5,,176
+,West Virginia,"3,210","3,630","3,630",,"2,800","2,800",,"4,030",820,25.6,,284
+,Wisconsin/c,"22,510","6,280","6,280",,"6,250","6,250",,"22,510",0,--,,484
+,Wyoming ,830,540,540,,540,540,,840,0,0.5,,185
+"Note: Details may not sum to totals due to rounding. Due to nonresponse or incomplete data, the parole population for some jurisdictions on December 31, 2022 does not equal the population on January 1, 2022 plus entries, minus exits. Counts may not be actual as reporting agencies may provide estimates on some or all detailed data.",,,,,,,,,,,,,
+..Not known. ,,,,,,,,,,,,,
+--Less than 0.05%.,,,,,,,,,,,,,
+~Maine no longer has a parole program and was removed from the Annual Parole Survey for 2022.,,,,,,,,,,,,,
+"a/Rates were calculated using U.S. Census Bureau estimates of U.S. residents age 18 or older for January 1, 2023, in each jurisdiction.",,,,,,,,,,,,,
+b/Imputed counts differ from reported counts in jurisdictions where data were not available. BJS imputed where data were not available. See Methodology.,,,,,,,,,,,,,
+c/Data for parole entries and exits are subject to fluctuation. See Parole: Explanatory notes for 2022 for details.,,,,,,,,,,,,,
+d/California parole data are not comparable to prior years. See Methodology.,,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Parole Survey, 2022; and U.S. Census Bureau, National Intercensal Estimates, 2023.",,,,,,,,,,,,,

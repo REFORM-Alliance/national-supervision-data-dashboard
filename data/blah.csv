@@ -1,0 +1,36 @@
+state,table_num,table_name_clean,year,supervision_type,date_to,date_from,data_variables_clean,data_variables_title,data_values
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,2023-01-01,2023-12-31,change_number,Change - Number,39120
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,2023-01-01,2023-12-31,change_percent,Change - Percent,1.3
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,,,entries_imputed,Entries - Imputed,1626330
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,,,entries_reported,Entries - Reported,1461270
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,,,exits_imputed,Exits - Imputed,1607540
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,,,exits_reported,Exits - Reported,1444600
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,2023-12-31,,population,Population,3103350
+U.S. Total,Appendix table 6,Adults on probation,2023,Probation,2023-12-31,,population_per_100000_adult_residents,Population Per 100000 Adult Residents,1179
+U.S. Total,Appendix table 7,Adults exiting probation,2022,Probation,,,unsatisfactory_reason_other_than_incarceration_other_unknown_or_not_reported,Unsatisfactory Reason Other Than Incarceration - Other (Unknown Or Not Reported),316090
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,completion,Completion,615680
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,exits_reported,Exits - Reported,1444600
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,incarcerated_current_sentence,Incarcerated - Current Sentence,77560
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,incarcerated_other_unknown,Incarcerated - Other (Unknown),32360
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,incarcerated_to_receive_treatment,Incarcerated - To Receive Treatment,2710
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,incarcerated_total,Incarcerated - Total,167510
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,incarcerated_with_new_sentence,Incarcerated - With New Sentence,54880
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_absconder,Unsatisfactory Reason Other Than Incarceration - Absconder,35380
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_death,Unsatisfactory Reason Other Than Incarceration - Death,15070
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_discharged_to_warrant_or_detainer,Unsatisfactory Reason Other Than Incarceration - Discharged To Warrant Or Detainer,6170
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_other,Unsatisfactory Reason Other Than Incarceration - Other,183840
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_other_not_asked,Unsatisfactory Reason Other Than Incarceration - Other (Not Asked),163190
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_other_unknown,Unsatisfactory Reason Other Than Incarceration - Other (Unknown),230370
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_other_unsatisfactory,Unsatisfactory Reason Other Than Incarceration - Other (Unsatisfactory),28080
+U.S. Total,Appendix table 9,Adults exiting probation,2023,Probation,,,unsatisfactory_reason_other_than_incarceration_total,Unsatisfactory Reason Other Than Incarceration - Total,662100
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,2023-12-31,,population,Population,3103350
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,race_ethnicity_black,Race/Ethnicity - Black,550930
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,race_ethnicity_hispanic,Race/Ethnicity - Hispanic,280800
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,race_ethnicity_other,Race/Ethnicity - Other,50100
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,race_ethnicity_other_not_asked,Race/Ethnicity - Other (Not Asked),447930
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,race_ethnicity_other_unknown_or_not_reported,Race/Ethnicity - Other (Unknown Or Not Reported),850600
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,race_ethnicity_white,Race/Ethnicity - White,922990
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,sex_female,Sex - Female,439180
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,sex_male,Sex - Male,1401580
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,sex_other_not_asked,Sex - Other (Not Asked),447930
+U.S. Total,Appendix table 10,Selected characteristics of adults on probation,2023,Probation,,,sex_other_unknown_or_not_reported,Sex - Other (Unknown Or Not Reported),814670
