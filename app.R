@@ -284,7 +284,7 @@ ui <- navbarPage("National Supervision Data Dashboard",
                                 
                                 h4("Main Dashboard"),
                                 tags$ul(
-                                  tags$li(strong("Map & Barplot: "), "Choose a supervision type (e.g. Probation, ",
+                                  tags$li(strong("Map & Barplot: "), "Choose a supervision or control type (e.g. Probation, Parole, ",
                                           "Prison), an outcome category (Population, Admissions, or Exits), and ",
                                           "whether to view totals or per-100,000-residents rates."),
                                   tags$li(strong("Aggregation Type: "), "When viewing a Year Range, values are ",
