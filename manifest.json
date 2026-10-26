@@ -4579,13 +4579,19 @@
   },
   "files": {
     ".RData": {
-      "checksum": "29b8ad322c27469e664106d91361fc06"
+      "checksum": "d9816962b5ad110ebd84cf9052fe7e9f"
+    },
+    ".Renviron": {
+      "checksum": "241f8db71e764339332be566c7100e88"
     },
     ".Rprofile": {
-      "checksum": "ec93d3870bccd7a85a17eef927d188f6"
+      "checksum": "c897dce221917883757dea5adf37a6c6"
+    },
+    "app_new.R": {
+      "checksum": "58367d5418bf5a7ba115bbc37e49d4a7"
     },
     "app.R": {
-      "checksum": "736bce455f32a458c98cce4e9b067262"
+      "checksum": "37eddf93e58b413f3508289f75fc7bdc"
     },
     "archived-R/app_redone_w_about.R": {
       "checksum": "736bce455f32a458c98cce4e9b067262"

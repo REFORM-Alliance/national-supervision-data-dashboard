@@ -107,6 +107,17 @@ bjs_core <-
                      !is.na(population) & population > 0 ~ 100000 * (value / population),
                      TRUE ~ NA_real_))
 
+bjs_dem_df <- 
+  "data" %>% 
+  here("bjs_parole_characteristics_data.csv.gz") %>% 
+  fread(sep = ",", header = TRUE, stringsAsFactors = FALSE) %>% 
+  mutate(supervision_type = "Parole") %>% 
+  bind_rows("data" %>% 
+              here("bjs_probation_characteristics_data.csv.gz") %>% 
+              fread(sep = ",", header = TRUE, stringsAsFactors = FALSE) %>% 
+              mutate(supervision_type = "Probation")) %>% 
+  clean_names()
+
 ##Combine BJS w/ PPI
 ppi_bjs_data <- 
   bjs_core %>% 
@@ -153,6 +164,27 @@ my_theme <- bs_theme(
   danger = "#D55E00",      
   base_font = font_google("Roboto")
 )
+
+##Basemap Helper Function
+carto_key <- Sys.getenv("CARTO_API_KEY")
+
+add_basemap <- function(map) {
+  if (nzchar(carto_key)) {
+    addTiles(
+      map,
+      urlTemplate = paste0(
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png?key=",
+        carto_key
+      ),
+      attribution = paste0(
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ',
+        '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+      )
+    )
+  } else {
+    addProviderTiles(map, "Esri.WorldGrayCanvas")
+  }
+}
 
 ##Define Quarters
 available_years <- 
@@ -835,7 +867,7 @@ server <- function(input, output, session){
       
       map_data %>% 
         leaflet() %>%
-        addProviderTiles("CartoDB.Positron") %>%
+        add_basemap() %>%
         addPolygons(
           fillColor = ~pal(value),
           color = "white", weight = 1,
@@ -873,7 +905,7 @@ server <- function(input, output, session){
       
       map_data %>% 
         leaflet() %>%
-        addProviderTiles("CartoDB.Positron") %>%
+        add_basemap() %>%
         addPolygons(
           fillColor = ~pal(value),
           color = "white", weight = 1,
