@@ -9,6 +9,8 @@ library(janitor)
 library(DBI)
 library(RPostgres)
 library(dbplyr)
+library(readxl)
+library(readr)
 
 
 ####Connect to Database####
@@ -24,7 +26,53 @@ con <- dbConnect(
 on.exit(dbDisconnect(con), add = TRUE)
 
 
+####Helper Functions####
+##XLSX to CSV
+xlsx_to_csv <- function(path, recursive = TRUE, overwrite = FALSE) {
+  is_folder <- dir.exists(path)
+  
+  files <- c(
+    unlist(lapply(path[is_folder], list.files, full.names = TRUE, recursive = recursive)),
+    path[!is_folder]
+  )
+  files <- files[grepl("\\.xlsx?$", files, ignore.case = TRUE) &
+                   !grepl("^~\\$", basename(files))]   # skip Excel's temporary lock files
+  
+  for (f in files) {
+    out <- sub("\\.xlsx?$", ".csv", f, ignore.case = TRUE)
+    
+    if (file.exists(out) && !overwrite) {
+      message("Skipped (CSV already exists): ", basename(out))
+      next
+    }
+    
+    tbl <- read_excel(f,
+                      sheet = 1,
+                      col_names = FALSE,
+                      col_types = "text",
+                      range = cell_limits(c(1, 1), c(NA, NA)),   # start at A1 so no blank rows are dropped
+                      .name_repair = "minimal")
+    
+    write_csv(tbl, out, na = "", col_names = FALSE)
+    message("Wrote ", out)
+  }
+  
+  invisible(files)
+}
+
+
 ####Read in and Clean Data####
+##Convert XLSX to CSV
+here("data-raw") %>% 
+  list.files(full.names = TRUE) %>% 
+  str_subset("ppus") %>% 
+  map(~.x %>% 
+        list.files(full.names = TRUE)) %>% 
+  unlist() %>% 
+  map(~.x %>% 
+        xlsx_to_csv())
+  
+
 ##BJS Data
 bjs_full_df <- 
   here("data-raw") %>% 
@@ -33,9 +81,12 @@ bjs_full_df <-
   map(~.x %>% 
         list.files(full.names = TRUE)) %>% 
   unlist() %>% 
+  str_subset(".csv$") %>% 
   map(~{
+    file_raw <- .x
+    
     raw <- 
-      .x %>% 
+      file_raw %>% 
       fread(header = FALSE, fill = TRUE) %>% 
       mutate(V1 = 
                V1 %>% 
@@ -151,7 +202,7 @@ bjs_full_df <-
       str_remove("/[a-z]$")
     
     og <- 
-      .x %>% 
+      file_raw %>% 
       fread(sep = ",", stringsAsFactors = FALSE, skip = jurisdiction_row, header = FALSE) %>% 
       mutate(across(where(is_character),
                     ~.x %>%
@@ -208,7 +259,8 @@ bjs_full_df <-
       separate_wider_delim(cols = state, 
                            delim = "/",
                            names = c("state", "state_extra"),
-                           too_few = "align_start") %>% 
+                           too_few = "align_start", 
+                           too_many = "drop") %>% 
       dplyr::select(-state_extra) %>% 
       mutate(state = 
                state %>% 

@@ -1,0 +1,73 @@
+Bureau of Justice Statistics,,,,,,,,,,,,,,,
+Filename: ppus24at05.xlsx,,,,,,,,,,,,,,,
+"Appendix table 5. Adults under community supervision, 2024",,,,,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2024  NCJ 311290",,,,,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Probation Survey, 2014–2024.",,,,,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov 202-307-0765,,,,,,,,,,,,,,,
+Date of version: 4/29/2026,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+"Appendix table 5. Adults under community supervision, 2024",,,,,,,,,,,,,,,
+,,,Entries,,,Exits,,,,,"Change, 2024",,,,
+Jurisdiction,,"Community supervision population, January 1, 2024/a",Reported,Imputed/b,,Reported,Imputed/b,,"Community supervision population, December 31, 2024/a",,Number,Percent,,,"Number under community supervision per 100,000 adult residents, December 31, 2024/c"
+,U.S. total,3699600,1631200,1873000,,1742600,1882400,,3639200,,-60400,-1.7,%,,1372
+Federal,,114700,53700,53700,,55400,55400,,115400,,700,0.6,%,,44
+State,,3584900,1577500,1819300,,1687200,1827000,,3523800,,-61100,-1.7,%,,1328
+,Alabama,54800,13000,15000,,14800,17400,,52600,,-2200,-4.2,,,1314
+,Alaska,3400,1300,1300,,1600,1600,,3400,,0,0,,,604
+,Arizona,84200,25500,25500,,27000,27000,,82300,,-1900,-2.2999999999999998,,,1386
+,Arkansas,70500,25300,25800,,23100,23600,,72400,,1900,2.6,,,3048
+,California,191800,111200,111200,,115800,115800,,188400,,-3400,-1.8,,,610
+,Colorado,86500,50400,51500,,40600,43100,,94600,,8100,8.6,,,2007
+,Connecticut,32400,17400,17400,,17200,17200,,32600,,200,0.6,,,1112
+,Delaware,11300,8500,8500,,8400,8400,,11400,,100,0.9,,,1372
+,District of Columbia,5800,5000,5000,,4400,4400,,6300,,500,7.9,,,1114
+,Florida,185000,113800,116000,,113700,116400,,183700,,-1300,-0.7,,,984
+,Georgia,384800,38700,209500,,205100,205100,,389400,,4600,1.2,,,4539
+,Hawaii,14800,4500,4500,,4600,4600,,14700,,-100,-0.7,,,1278
+,Idaho,38300,13000,15700,,11700,14100,,39400,,1100,2.8,,,2596
+,Illinois,104900,60000,60200,,61800,62100,,103600,,-1300,-1.3,,,1040
+,Indiana,97800,82500,82500,,82000,82000,,97000,,-800,-0.8,,,1826
+,Iowa,33400,16600,16600,,15000,15000,,35000,,1600,4.5999999999999996,,,1401
+,Kansas,19200,16400,16600,,21200,21500,,14400,,-4800,-33.299999999999997,,,635
+,Kentucky,64000,24800,24800,,25800,25800,,63000,,-1000,-1.6,,,1777
+,Louisiana,53400,26700,28500,,25700,27500,,54000,,600,1.1000000000000001,,,1532
+,Maine,5600,5600,5600,,2300,2300,,5900,,300,5.0999999999999996,,,511
+,Maryland,92700,33800,33800,,25900,25900,,89800,,-2900,-3.2,,,1844
+,Massachusetts,44200,43600,43600,,43600,43600,,44200,,0,0,,,769
+,Michigan,122500,33800,45700,,33600,43700,,122600,,100,0.1,,,1533
+,Minnesota,90700,46900,46900,,48700,48700,,88900,,-1800,-2,,,1988
+,Mississippi,44100,12600,13400,,9500,10400,,47100,,3000,6.4,,,2079
+,Missouri,54700,29800,30200,,30300,30700,,54200,,-500,-0.9,,,1117
+,Montana,11000,5300,5400,,5000,5200,,11200,,200,1.8,,,1244
+,Nebraska,11400,11000,11000,,10200,10200,,12200,,800,6.6,,,807
+,Nevada,22100,3300,13100,,11300,12000,,22600,,500,2.2000000000000002,,,886
+,New Hampshire,3900,1300,1300,,1000,1000,,3900,,0,0,,,338
+,New Jersey,43500,22900,22900,,19600,19600,,46700,,3200,6.9,,,631
+,New Mexico,14400,4100,11900,,3500,11100,,15200,,800,5.3,,,907
+,New York,94100,24000,24000,,27900,27900,,89700,,-4400,-4.9000000000000004,,,567
+,North Carolina,70700,45000,45000,,52200,52200,,69400,,-1300,-1.9,,,806
+,North Dakota,6500,6200,6200,,6200,6200,,6500,,0,0,,,1070
+,Ohio,194800,96600,105500,,101300,114700,,189100,,-5700,-3,,,2039
+,Oklahoma,28600,14700,17100,,14200,16500,,29200,,600,2.1,,,938
+,Oregon,37600,13800,13800,,16200,16200,,36500,,-1100,-3,,,1063
+,Pennsylvania,164700,70300,70300,,12200,82400,,110000,,-54700,-49.7,,,1056
+,Rhode Island,17300,4100,4100,,4500,4500,,17000,,-300,-1.8,,,1883
+,South Carolina,30100,15500,15500,,15000,15000,,30600,,500,1.6,,,714
+,South Dakota,9100,5400,5400,,5300,5300,,9200,,100,1.1000000000000001,,,1313
+,Tennessee,95100,20800,24700,,20700,27300,,90100,,-5000,-5.5,,,1607
+,Texas,471200,249400,249700,,246700,246900,,473900,,2700,0.6,,,2028
+,Utah,23100,9600,13400,,8700,10600,,25900,,2800,10.8,,,1021
+,Vermont,4100,/,1200,,/,800,,4500,,400,8.9,,,842
+,Virginia,72700,32300,35100,,33800,35900,,71500,,-1200,-1.7,,,1038
+,Washington,87100,25700,31700,,21900,31300,,88200,,1100,1.2,,,1411
+,West Virginia,10600,7700,7700,,8100,8100,,10000,,-600,-6,,,704
+,Wisconsin,61600,24600,24600,,24200,24200,,62000,,400,0.6,,,1319
+,Wyoming,5900,2500,2700,,2800,3100,,5500,,-400,-7.3,,,1202
+,,,,,,,,,,,,,,,
+"Note: Counts are rounded to the nearest hundred. Details may not sum to totals due to rounding. Due to nonresponse or incomplete data, the community supervision population for some jurisdictions on December 31, 2024, does not equal the population on January 1, 2024, plus entries, minus exits. Reporting methods for some probation agencies changed over time, and probation coverage was expanded in 2023.",,,,,,,,,,,,,,,
+/Not known.,,,,,,,,,,,,,,,
+"a/The January 1 population excludes 11,790 offenders and the December 31 population excludes 12,450 offenders under community supervision who were on both probation and parole. See Methodology for more detail on dual status.",,,,,,,,,,,,,,,
+b/Reflects reported data except for jurisdictions where data were not available.,,,,,,,,,,,,,,,
+"c/Rates were computed using the estimated U.S. adult resident population in each jurisdiction on January 1, 2025.",,,,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Probation Survey and Annual Parole Survey, 2024; and U.S. Census Bureau, National Intercensal Estimates, 2025.",,,,,,,,,,,,,,,

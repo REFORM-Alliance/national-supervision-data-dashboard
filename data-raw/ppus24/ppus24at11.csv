@@ -1,0 +1,76 @@
+Bureau of Justice Statistics,,,,,,,,,,,,
+Filename: ppus24at11.xlsx,,,,,,,,,,,,
+"Appendix table 11. Adults on parole, by jurisdiction, 2024",,,,,,,,,,,,
+"Report title: Probation and Parole in the United States, 2024  NCJ 311290",,,,,,,,,,,,
+"Data source: Bureau of Justice Statistics, Annual Probation Survey, 2014–2024.",,,,,,,,,,,,
+"Author: Danielle Kaeble, BJS Statistician",,,,,,,,,,,,
+Refer questions to: askbjs@usdoj.gov 202-307-0765,,,,,,,,,,,,
+Date of version: 4/29/2026,,,,,,,,,,,,
+,,,,,,,,,,,,
+"Appendix table 11. Adults on parole, by jurisdiction, 2024",,,,,,,,,,,,
+,,,,,,,,,,,,
+,,,Entries,,,Exits,,,"Change, January 1, 2024–December 31, 2024",,,
+Jurisdiction,,"Parole population, January 1, 2024",Reported,Imputed,,Reported,Imputed,"Parole population, December 31, 2024",Number,Percent,,"Number on parole per 100,000 adult U.S. residents, December 31, 2024/a"
+,U.S. total,674720,309820,314700,,305060,329780,663820,-10900,-1.6,%,250
+Federal,,103240,48320,48320,,49590,49590,104070,840,0.8,%,39
+State,,571490,261500,266380,,255470,280190,559750,-11740,-2.1,%,211
+,Alabama,6270,2760,2760,,3210,3210,5820,-450,-7.8,,145
+,Alaska/b,1170,300,300,,280,280,1190,20,2,,212
+,Arizona,6790,10110,10110,,10010,10010,6890,100,1.5,,116
+,Arkansas,22570,8470,8470,,8560,8560,22460,-110,-0.5,,945
+,"California/c,d",38950,18200,18200,,19390,19390,38950,0,0,,126
+,Colorado,9010,5420,5420,,5520,5520,8900,-100,-1.2,,189
+,Connecticut,1960,1760,1760,,1220,1220,2490,530,21.4,,85
+,Delaware,310,100,100,,110,110,300,-10,-4.3,,36
+,District of Columbia,1760,630,630,,690,690,1730,-30,-1.8,,306
+,Florida,3810,5590,5590,,5670,5670,3720,-90,-2.2999999999999998,,20
+,Georgia,14430,5460,5460,,6370,6370,13520,-920,-6.8,,158
+,Hawaii,1000,450,450,,370,370,1090,90,7.8,,94
+,Idaho,6770,2630,2630,,2400,2400,7000,230,3.3,,461
+,Illinois,16980,13500,13500,,15100,15100,15960,-1020,-6.4,,160
+,Indiana,6150,5140,5140,,3870,3870,7420,1280,17.2,,140
+,Iowa,6830,3410,3410,,3150,3150,7100,260,3.7,,284
+,Kansas,5530,3340,3340,,3500,3500,5370,-160,-2.9,,237
+,Kentucky,12290,8170,8170,,8400,8400,12060,-230,-1.9,,340
+,Louisiana,17980,12070,12070,,11810,11810,18240,250,1.4,,517
+,Maine,~,~,~,,~,~,~,~,~,,~
+,Maryland,9620,2950,2950,,2410,2410,9340,-290,-3.1,,192
+,Massachusetts,1690,1980,1980,,1800,1800,1870,180,9.5,,33
+,Michigan,8930,6070,6070,,5900,5900,9090,160,1.8,,114
+,Minnesota,6700,4170,4170,,4250,4250,6620,-80,-1.2,,148
+,Mississippi,9850,4270,4270,,3800,3800,10320,470,4.5999999999999996,,456
+,Missouri,16500,9190,9190,,9990,9990,15690,-800,-5.0999999999999996,,323
+,Montana,1130,390,390,,450,450,1070,-60,-5.5,,119
+,Nebraska,850,1220,1220,,940,940,1140,290,25,,75
+,Nevada/b,5460,/,2990,,3010,3010,5440,-20,-0.4,,213
+,New Hampshire,1510,440,440,,300,300,1650,140,8.1999999999999993,,142
+,New Jersey,15570,4110,4110,,3710,3710,15970,400,2.5,,216
+,New Mexico/b,2230,/,1520,,/,1560,2190,-40,-2,,130
+,New York,24090,9560,9560,,9980,9980,23680,-420,-1.8,,150
+,North Carolina,10120,10500,10500,,11220,11220,10650,520,4.9000000000000004,,124
+,North Dakota,620,800,800,,870,870,560,-60,-11.4,,92
+,Ohio,16480,10980,10980,,12310,12310,15150,-1330,-8.8000000000000007,,163
+,Oklahoma,2310,750,750,,870,870,2180,-120,-5.6,,70
+,Oregon,20680,5610,5610,,7650,7650,19500,-1180,-6.1,,568
+,Pennsylvania/b,73830,26870,26870,,9800,32550,68150,-5680,-8.3000000000000007,,654
+,Rhode Island,380,210,210,,230,230,360,-20,-6.4,,40
+,South Carolina,3240,1990,1990,,2020,2020,3210,-30,-0.8,,75
+,South Dakota,3410,2380,2380,,2260,2260,3530,120,3.5,,504
+,Tennessee,12320,2770,2770,,3420,3420,11670,-640,-5.5,,208
+,Texas,98230,29200,29200,,31950,31950,95480,-2750,-2.9,,409
+,Utah,3600,2850,2850,,2620,2620,3830,230,6,,151
+,Vermont/b,720,/,370,,/,400,690,-40,-5.2,,128
+,Virginia,1580,160,160,,320,320,1420,-150,-10.8,,21
+,Washington,10540,3510,3510,,3440,3440,10600,70,0.6,,170
+,West Virginia,3430,2810,2810,,3130,3130,3110,-330,-10.5,,219
+,Wisconsin/c,22010,7010,7010,,5770,5770,22240,230,1,,473
+,Wyoming,810,480,480,,540,540,750,-60,-8,,164
+,,,,,,,,,,,,
+"Note: Details may not sum to totals due to rounding. Due to nonresponse or incomplete data, the parole population for some jurisdictions on December 31, 2024, does not equal the population on January 1, 2024, plus entries, minus exits. Counts may not be actual as reporting agencies may provide estimates on some or all detailed data.",,,,,,,,,,,,
+/Not known.,,,,,,,,,,,,
+~Not applicable.,,,,,,,,,,,,
+"a/Rates were calculated using U.S. Census Bureau estimates of U.S. residents age 18 or older for January 1, 2025, in each jurisdiction.",,,,,,,,,,,,
+b/Imputed counts differ from reported counts in jurisdictions where data were not available. The Bureau of Justice Statistics imputed where data were not available. See Methodology.,,,,,,,,,,,,
+c/Data for parole entries and exits are subject to fluctuation. See Parole: Explanatory notes for 2024 for details.,,,,,,,,,,,,
+d/California parole data are not comparable prior to 2022. See Methodology.,,,,,,,,,,,,
+"Source: Bureau of Justice Statistics, Annual Parole Survey, 2024; and U.S. Census Bureau, National Intercensal Estimates, 2025.",,,,,,,,,,,,

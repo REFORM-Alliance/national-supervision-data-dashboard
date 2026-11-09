@@ -3046,30 +3046,38 @@
       "description": {
         "Package": "readr",
         "Title": "Read Rectangular Text Data",
-        "Version": "2.1.5",
-        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"),\n    person(\"Jim\", \"Hester\", role = \"aut\"),\n    person(\"Romain\", \"Francois\", role = \"ctb\"),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Shelby\", \"Bearrows\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")),\n    person(\"https://github.com/mandreyel/\", role = \"cph\",\n           comment = \"mio library\"),\n    person(\"Jukka\", \"Jylänki\", role = c(\"ctb\", \"cph\"),\n           comment = \"grisu3 implementation\"),\n    person(\"Mikkel\", \"Jørgensen\", role = c(\"ctb\", \"cph\"),\n           comment = \"grisu3 implementation\")\n  )",
+        "Version": "2.2.0",
+        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"),\n    person(\"Jim\", \"Hester\", role = \"aut\"),\n    person(\"Romain\", \"Francois\", role = \"ctb\"),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Shelby\", \"Bearrows\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"),\n           comment = c(ROR = \"03wc8by49\")),\n    person(\"https://github.com/mandreyel/\", role = \"cph\",\n           comment = \"mio library\"),\n    person(\"Jukka\", \"Jylänki\", role = c(\"ctb\", \"cph\"),\n           comment = \"grisu3 implementation\"),\n    person(\"Mikkel\", \"Jørgensen\", role = c(\"ctb\", \"cph\"),\n           comment = \"grisu3 implementation\")\n  )",
         "Description": "The goal of 'readr' is to provide a fast and friendly way to\n    read rectangular data (like 'csv', 'tsv', and 'fwf').  It is designed\n    to flexibly parse many types of data found in the wild, while still\n    cleanly failing when data unexpectedly changes.",
         "License": "MIT + file LICENSE",
         "URL": "https://readr.tidyverse.org, https://github.com/tidyverse/readr",
         "BugReports": "https://github.com/tidyverse/readr/issues",
-        "Depends": "R (>= 3.6)",
-        "Imports": "cli (>= 3.2.0), clipr, crayon, hms (>= 0.4.1), lifecycle (>=\n0.2.0), methods, R6, rlang, tibble, utils, vroom (>= 1.6.0)",
-        "Suggests": "covr, curl, datasets, knitr, rmarkdown, spelling, stringi,\ntestthat (>= 3.2.0), tzdb (>= 0.1.1), waldo, withr, xml2",
+        "Depends": "R (>= 4.1)",
+        "Imports": "cli, clipr, crayon, glue, hms (>= 0.4.1), lifecycle, methods,\nR6, rlang, tibble, utils, vroom (>= 1.7.0), withr",
+        "Suggests": "covr, curl, datasets, knitr, rmarkdown, spelling, stringi,\ntestthat (>= 3.2.0), tzdb (>= 0.1.1), waldo, xml2",
         "LinkingTo": "cpp11, tzdb (>= 0.1.1)",
         "VignetteBuilder": "knitr",
         "Config/Needs/website": "tidyverse, tidyverse/tidytemplate",
         "Config/testthat/edition": "3",
         "Config/testthat/parallel": "false",
+        "Config/usethis/last-upkeep": "2025-11-14",
         "Encoding": "UTF-8",
         "Language": "en-US",
-        "RoxygenNote": "7.2.3",
+        "RoxygenNote": "7.3.3",
         "NeedsCompilation": "yes",
-        "Packaged": "2024-01-10 21:03:49 UTC; jenny",
-        "Author": "Hadley Wickham [aut],\n  Jim Hester [aut],\n  Romain Francois [ctb],\n  Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>),\n  Shelby Bearrows [ctb],\n  Posit Software, PBC [cph, fnd],\n  https://github.com/mandreyel/ [cph] (mio library),\n  Jukka Jylänki [ctb, cph] (grisu3 implementation),\n  Mikkel Jørgensen [ctb, cph] (grisu3 implementation)",
+        "Packaged": "2026-02-19 07:07:31 UTC; jenny",
+        "Author": "Hadley Wickham [aut],\n  Jim Hester [aut],\n  Romain Francois [ctb],\n  Jennifer Bryan [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-6983-2759>),\n  Shelby Bearrows [ctb],\n  Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>),\n  https://github.com/mandreyel/ [cph] (mio library),\n  Jukka Jylänki [ctb, cph] (grisu3 implementation),\n  Mikkel Jørgensen [ctb, cph] (grisu3 implementation)",
         "Maintainer": "Jennifer Bryan <jenny@posit.co>",
         "Repository": "RSPM",
-        "Date/Publication": "2024-01-10 23:20:02 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-04-25 19:53:54 UTC; unix"
+        "Date/Publication": "2026-02-19 18:10:02 UTC",
+        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2026-08-12 19:10:47 UTC; unix",
+        "RemoteType": "standard",
+        "RemoteRef": "readr",
+        "RemotePkgRef": "readr",
+        "RemoteRepos": "https://packagemanager.posit.co/cran/__linux__/noble/latest",
+        "RemoteReposName": "CRAN",
+        "RemotePkgPlatform": "source",
+        "RemoteSha": "2.2.0"
       }
     },
     "readxl": {
@@ -3078,30 +3086,37 @@
       "description": {
         "Package": "readxl",
         "Title": "Read Excel Files",
-        "Version": "1.5.0",
-        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Posit, PBC\", role = c(\"cph\", \"fnd\"),\n           comment = \"Copyright holder of all R code and all C/C++ code without explicit copyright attribution\"),\n    person(\"Marcin\", \"Kalicinski\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included RapidXML code\"),\n    person(\"Komarov Valery\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"Christophe Leitienne\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"Bob Colbert\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"David Hoerl\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"Evan Miller\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\")\n  )",
-        "Description": "Import excel files into R. Supports '.xls' via the embedded\n    'libxls' C library <https://github.com/libxls/libxls> and '.xlsx' via\n    the embedded 'RapidXML' C++ library\n    <https://rapidxml.sourceforge.net/>.  Works on Windows, Mac and Linux\n    without external dependencies.",
+        "Version": "1.6.0",
+        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Posit, PBC\", role = c(\"cph\", \"fnd\"),\n           comment = \"Copyright holder of all R code and all C/C++ code without explicit copyright attribution\"),\n    person(\"Marcin\", \"Kalicinski\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included RapidXML code\"),\n    person(\"Komarov Valery\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"Christophe Leitienne\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"Bob Colbert\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"David Hoerl\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"Evan Miller\", role = c(\"ctb\", \"cph\"),\n           comment = \"Author of included libxls code\"),\n    person(\"kokke\", role = \"ctb\",\n           comment = \"Author of included tiny-AES-c code\")\n  )",
+        "Description": "Import excel files into R. Supports '.xls' via the embedded\n    'libxls' C library <https://github.com/libxls/libxls> and '.xlsx' via\n    the embedded 'RapidXML' C++ library\n    <https://rapidxml.sourceforge.net/>.  Works on Windows, Mac and Linux\n    without external dependencies. Reading of password-encrypted '.xlsx'\n    files is supported via the embedded 'tiny-AES-c' C library\n    <https://github.com/kokke/tiny-AES-c>.",
         "License": "MIT + file LICENSE",
         "URL": "https://readxl.tidyverse.org, https://github.com/tidyverse/readxl",
         "BugReports": "https://github.com/tidyverse/readxl/issues",
-        "Depends": "R (>= 4.1)",
-        "Imports": "cellranger, tibble (>= 2.0.1), utils",
-        "Suggests": "covr, knitr, rmarkdown, testthat (>= 3.1.6), withr",
+        "Depends": "R (>= 4.2)",
+        "Imports": "cellranger, cli, rlang, tibble (>= 2.0.1), utils",
+        "Suggests": "askpass, covr, knitr, rmarkdown, testthat (>= 3.1.6), withr",
         "LinkingTo": "cpp11 (>= 0.5.5), progress",
         "VignetteBuilder": "knitr",
         "Config/build/compilation-database": "true",
         "Config/Needs/website": "tidyverse/tidytemplate, tidyverse",
-        "Config/roxygen2/version": "8.0.0",
+        "Config/roxygen2/version": "8.1.0",
         "Config/testthat/edition": "3",
         "Encoding": "UTF-8",
-        "Note": "libxls v1.6.3 c199d13",
+        "Note": "libxls v1.6.4 34c7cc6; tiny-AES-c 2385675",
         "NeedsCompilation": "yes",
-        "Packaged": "2026-05-16 14:11:44 UTC; jenny",
-        "Author": "Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>),\n  Jennifer Bryan [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-6983-2759>),\n  Posit, PBC [cph, fnd] (Copyright holder of all R code and all C/C++\n    code without explicit copyright attribution),\n  Marcin Kalicinski [ctb, cph] (Author of included RapidXML code),\n  Komarov Valery [ctb, cph] (Author of included libxls code),\n  Christophe Leitienne [ctb, cph] (Author of included libxls code),\n  Bob Colbert [ctb, cph] (Author of included libxls code),\n  David Hoerl [ctb, cph] (Author of included libxls code),\n  Evan Miller [ctb, cph] (Author of included libxls code)",
+        "Packaged": "2026-10-16 22:54:36 UTC; jenny",
+        "Author": "Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>),\n  Jennifer Bryan [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-6983-2759>),\n  Posit, PBC [cph, fnd] (Copyright holder of all R code and all C/C++\n    code without explicit copyright attribution),\n  Marcin Kalicinski [ctb, cph] (Author of included RapidXML code),\n  Komarov Valery [ctb, cph] (Author of included libxls code),\n  Christophe Leitienne [ctb, cph] (Author of included libxls code),\n  Bob Colbert [ctb, cph] (Author of included libxls code),\n  David Hoerl [ctb, cph] (Author of included libxls code),\n  Evan Miller [ctb, cph] (Author of included libxls code),\n  kokke [ctb] (Author of included tiny-AES-c code)",
         "Maintainer": "Jennifer Bryan <jenny@posit.co>",
         "Repository": "RSPM",
-        "Date/Publication": "2026-05-16 21:50:23 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2026-05-17 04:55:39 UTC; unix"
+        "Date/Publication": "2026-10-17 07:20:02 UTC",
+        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2026-10-18 06:28:25 UTC; unix",
+        "RemoteType": "standard",
+        "RemoteRef": "readxl",
+        "RemotePkgRef": "readxl",
+        "RemoteRepos": "https://packagemanager.posit.co/cran/__linux__/noble/latest",
+        "RemoteReposName": "CRAN",
+        "RemotePkgPlatform": "source",
+        "RemoteSha": "1.6.0"
       }
     },
     "rematch": {
@@ -4327,31 +4342,40 @@
       "description": {
         "Package": "vroom",
         "Title": "Read and Write Rectangular Text Data Quickly",
-        "Version": "1.6.5",
-        "Authors@R": "c(\n    person(\"Jim\", \"Hester\", role = \"aut\",\n           comment = c(ORCID = \"0000-0002-2739-7082\")),\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Shelby\", \"Bearrows\", role = \"ctb\"),\n    person(\"https://github.com/mandreyel/\", role = \"cph\",\n           comment = \"mio library\"),\n    person(\"Jukka\", \"Jylänki\", role = \"cph\",\n           comment = \"grisu3 implementation\"),\n    person(\"Mikkel\", \"Jørgensen\", role = \"cph\",\n           comment = \"grisu3 implementation\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
+        "Version": "1.7.1",
+        "Authors@R": "c(\n    person(\"Jim\", \"Hester\", role = \"aut\",\n           comment = c(ORCID = \"0000-0002-2739-7082\")),\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Shelby\", \"Bearrows\", role = \"ctb\"),\n    person(\"https://github.com/mandreyel/\", role = \"cph\",\n           comment = \"mio library\"),\n    person(\"Jukka\", \"Jylänki\", role = \"cph\",\n           comment = \"grisu3 implementation\"),\n    person(\"Mikkel\", \"Jørgensen\", role = \"cph\",\n           comment = \"grisu3 implementation\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\"))\n  )",
         "Description": "The goal of 'vroom' is to read and write data (like 'csv',\n    'tsv' and 'fwf') quickly. When reading it uses a quick initial\n    indexing step, then reads the values lazily , so only the data you\n    actually use needs to be read.  The writer formats the data in\n    parallel and writes to disk asynchronously from formatting.",
         "License": "MIT + file LICENSE",
-        "URL": "https://vroom.r-lib.org, https://github.com/tidyverse/vroom",
+        "URL": "https://vroom.tidyverse.org, https://github.com/tidyverse/vroom",
         "BugReports": "https://github.com/tidyverse/vroom/issues",
-        "Depends": "R (>= 3.6)",
-        "Imports": "bit64, cli (>= 3.2.0), crayon, glue, hms, lifecycle (>=\n1.0.3), methods, rlang (>= 0.4.2), stats, tibble (>= 2.0.0),\ntidyselect, tzdb (>= 0.1.1), vctrs (>= 0.2.0), withr",
+        "Depends": "R (>= 4.1)",
+        "Imports": "bit64, cli (>= 3.2.0), crayon, glue, hms, lifecycle (>=\n1.0.3), methods, rlang (>= 1.1.0), stats, tibble (>= 2.0.0),\ntidyselect, tzdb (>= 0.1.1), vctrs (>= 0.2.0), withr",
         "Suggests": "archive, bench (>= 1.1.0), covr, curl, dplyr, forcats, fs,\nggplot2, knitr, patchwork, prettyunits, purrr, rmarkdown,\nrstudioapi, scales, spelling, testthat (>= 2.1.0), tidyr,\nutils, waldo, xml2",
-        "LinkingTo": "cpp11 (>= 0.2.0), progress (>= 1.2.1), tzdb (>= 0.1.1)",
+        "LinkingTo": "cpp11 (>= 0.2.0), progress (>= 1.2.3), tzdb (>= 0.1.1)",
         "VignetteBuilder": "knitr",
         "Config/Needs/website": "nycflights13, tidyverse/tidytemplate",
         "Config/testthat/edition": "3",
         "Config/testthat/parallel": "false",
+        "Config/usethis/last-upkeep": "2025-11-25",
         "Copyright": "file COPYRIGHTS",
         "Encoding": "UTF-8",
         "Language": "en-US",
-        "RoxygenNote": "7.2.3.9000",
+        "RoxygenNote": "7.3.3",
+        "Config/build/compilation-database": "true",
         "NeedsCompilation": "yes",
-        "Packaged": "2023-12-05 16:46:59 UTC; jenny",
-        "Author": "Jim Hester [aut] (<https://orcid.org/0000-0002-2739-7082>),\n  Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),\n  Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>),\n  Shelby Bearrows [ctb],\n  https://github.com/mandreyel/ [cph] (mio library),\n  Jukka Jylänki [cph] (grisu3 implementation),\n  Mikkel Jørgensen [cph] (grisu3 implementation),\n  Posit Software, PBC [cph, fnd]",
+        "Packaged": "2026-03-30 20:25:37 UTC; jenny",
+        "Author": "Jim Hester [aut] (ORCID: <https://orcid.org/0000-0002-2739-7082>),\n  Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>),\n  Jennifer Bryan [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-6983-2759>),\n  Shelby Bearrows [ctb],\n  https://github.com/mandreyel/ [cph] (mio library),\n  Jukka Jylänki [cph] (grisu3 implementation),\n  Mikkel Jørgensen [cph] (grisu3 implementation),\n  Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
         "Maintainer": "Jennifer Bryan <jenny@posit.co>",
         "Repository": "RSPM",
-        "Date/Publication": "2023-12-05 23:50:02 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-05-05 18:22:31 UTC; unix"
+        "Date/Publication": "2026-03-31 05:10:02 UTC",
+        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2026-08-12 19:09:37 UTC; unix",
+        "RemoteType": "standard",
+        "RemoteRef": "vroom",
+        "RemotePkgRef": "vroom",
+        "RemoteRepos": "https://packagemanager.posit.co/cran/__linux__/noble/latest",
+        "RemoteReposName": "CRAN",
+        "RemotePkgPlatform": "source",
+        "RemoteSha": "1.7.1"
       }
     },
     "waiter": {
@@ -4585,13 +4609,13 @@
       "checksum": "241f8db71e764339332be566c7100e88"
     },
     ".Rprofile": {
-      "checksum": "c897dce221917883757dea5adf37a6c6"
+      "checksum": "80dcfe74dc43d0400e1edcb7f3ba814e"
     },
     "app_new.R": {
       "checksum": "58367d5418bf5a7ba115bbc37e49d4a7"
     },
     "app.R": {
-      "checksum": "37eddf93e58b413f3508289f75fc7bdc"
+      "checksum": "f369dd9e1457a2441917c6b8d6af248f"
     },
     "archived-R/app_redone_w_about.R": {
       "checksum": "736bce455f32a458c98cce4e9b067262"
@@ -4830,6 +4854,60 @@
     "data-raw/ppus23/ppus23at13.csv": {
       "checksum": "6dcbaf2a039702b7272016324837aba0"
     },
+    "data-raw/ppus24/ppus24at05.csv": {
+      "checksum": "d996226d4115ba0b9e2fdb168dcb79c3"
+    },
+    "data-raw/ppus24/ppus24at05.xlsx": {
+      "checksum": "612cd39a7387dd5a5a4ac153fc0dd8ce"
+    },
+    "data-raw/ppus24/ppus24at06.csv": {
+      "checksum": "a7d437af14b1a6186c30f68bba5b65f6"
+    },
+    "data-raw/ppus24/ppus24at06.xlsx": {
+      "checksum": "8a36e0552c67ed599cd7ad79fc3ca486"
+    },
+    "data-raw/ppus24/ppus24at07.csv": {
+      "checksum": "d2772ce96803af5b100ceee5fcc2180c"
+    },
+    "data-raw/ppus24/ppus24at07.xlsx": {
+      "checksum": "f5bce0cf557e14c6b00b790381ee68a3"
+    },
+    "data-raw/ppus24/ppus24at08.csv": {
+      "checksum": "1d226bd1af38b9d88f69aaf8c34adb95"
+    },
+    "data-raw/ppus24/ppus24at08.xlsx": {
+      "checksum": "9c38f4de66a3f71461e6a7f8a66e1095"
+    },
+    "data-raw/ppus24/ppus24at09.csv": {
+      "checksum": "1ffc70f213dafe03f4ce39d4f63524cb"
+    },
+    "data-raw/ppus24/ppus24at09.xlsx": {
+      "checksum": "9143d233202c48a0fcdcd9f94ab3be58"
+    },
+    "data-raw/ppus24/ppus24at10.csv": {
+      "checksum": "5f684d242fd853e0d6d1bcae927090ca"
+    },
+    "data-raw/ppus24/ppus24at10.xlsx": {
+      "checksum": "9b5b36bfc8bce92e4d68e28f5e07e981"
+    },
+    "data-raw/ppus24/ppus24at11.csv": {
+      "checksum": "337bca681e4d4faa4ddf91be6f811d6b"
+    },
+    "data-raw/ppus24/ppus24at11.xlsx": {
+      "checksum": "6ae7b4df420161b30e08fa16816bfdd5"
+    },
+    "data-raw/ppus24/ppus24at12.csv": {
+      "checksum": "9e19d153739ffa45e5a15f6906f8484b"
+    },
+    "data-raw/ppus24/ppus24at12.xlsx": {
+      "checksum": "012463f0b915a5d03220c53861173e06"
+    },
+    "data-raw/ppus24/ppus24at13.csv": {
+      "checksum": "8dd6abec592d855d33545268e732be5e"
+    },
+    "data-raw/ppus24/ppus24at13.xlsx": {
+      "checksum": "ec3bba09ce3dc7288f6623e09f0eabff"
+    },
     "data-raw/probation-demographic-data/jurisdiction_data_hispanic_origin_2000_and_earlier.csv": {
       "checksum": "6b154d65b349e26c07d6463b051debdf"
     },
@@ -4858,7 +4936,7 @@
       "checksum": "f6535b9b5bcc4c4f7c85c84b183e5673"
     },
     "data/bjs_data_raw.csv": {
-      "checksum": "ca62847bd8db2d2ecefbb766800ef6ed"
+      "checksum": "069a5d04d411dddab8631535d618bcf7"
     },
     "data/bjs_parole_characteristics_data.csv.gz": {
       "checksum": "5a19a8b97442484581cd1d3b63b972be"
@@ -4870,7 +4948,7 @@
       "checksum": "6c6d0a62f9ad260a21fd42c7f528ff3e"
     },
     "data/community_supervision_pop_by_state.csv": {
-      "checksum": "802485fa07c8b383001c2b3a5cfb0959"
+      "checksum": "ad4460352fae4d31db4c0aceb5abebba"
     },
     "data/states_sf.rds": {
       "checksum": "64106cf2485dd9f08a5e8cb9b14c30e9"
@@ -4954,7 +5032,7 @@
       "checksum": "0da43de0e155f14845b66bff809ebe0c"
     },
     "R/read-and-clean-bjs-data.R": {
-      "checksum": "12c0230c773ae9560646469264bf23ab"
+      "checksum": "b7b6514dcdaf5ed5725f0a946277aa20"
     },
     "R/scrape-bjs-probation-parole-dashboards.R": {
       "checksum": "c3fcb5d0ca666bd4882b43b50d593902"
@@ -4963,7 +5041,7 @@
       "checksum": "975a4d9141c721ba3dfa0835c83c73cb"
     },
     "renv.lock": {
-      "checksum": "a4a5965332ec323eec339ffcc25f48af"
+      "checksum": "bb8af58288eb47893841480057b3f640"
     }
   },
   "users": null
