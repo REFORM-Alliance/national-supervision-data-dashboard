@@ -403,6 +403,14 @@ bjs_full_df <-
            na_if("c") %>% 
            str_replace_all("District Of Columbia", "District of Columbia")) %>% 
   filter(is.na(state) == FALSE) %>% 
+  # A footnote letter can be glued onto a name (the 2024 table has "Delawared" for Delaware plus
+  # note d), which would split one state into two. Drop a trailing letter when that makes the
+  # name a known jurisdiction.
+  mutate(state = 
+           ifelse(!(state %in% c(state.name, "District of Columbia", "Federal", "U.S. Total", "State Total")) &
+                    str_remove(state, "[a-z]$") %in% c(state.name, "District of Columbia", "Federal", "U.S. Total", "State Total"),
+                  str_remove(state, "[a-z]$"),
+                  state)) %>% 
   mutate(incarcerated_flag = ifelse(str_detect(data_variables_clean, "^incarcerated_") == TRUE, 1, 0)) %>% 
   group_by(state, table_num, table_name_clean, year, supervision_type, incarcerated_flag, date_to, date_from) %>% 
   mutate(blahblah_incarcerated_total = 

@@ -29,7 +29,7 @@ Maintained by the [REFORM Alliance](https://github.com/REFORM-Alliance).
 
 | Tab | What it is for |
 |---|---|
-| **Home** | A short writeup of the data, four headline numbers, and three trend charts: the rise and fall of community supervision, how much probation and parole have each changed (in percent) since 2019, and the spread across states. Every figure is computed from the same data as the other tabs. |
+| **Home** | A short writeup of the data, four headline numbers, and three trend charts: the rise and fall of community supervision, how much probation and parole have each changed (in percent) since a reference year (2019 by default), and the spread across states. Every figure is computed from the same data as the other tabs. |
 | **Main Dashboard** | A map and ranked bar plot of every state for any supervision type, outcome, and year (or range of years), plus a searchable table you can export as Copy, CSV, or Excel. |
 | **State Dashboard** | One state's community supervision, probation, and parole trends compared with the national mean and the population-weighted national median. |
 | **National Dashboard** | National population, admissions, and exits over time for community supervision, probation, and parole, as totals or per-100,000 rates. |
@@ -44,7 +44,7 @@ All data are **aggregate counts** published by the Prison Policy Initiative (PPI
 | Source | What it provides | Years | Location in repo |
 |---|---|---|---|
 | [Prison Policy Initiative](https://www.prisonpolicy.org/blog/2026/06/02/supervision/) | **Population** counts by state and type of supervision or incarceration. Builds on, corrects, and extends BJS data by harmonizing definitions across states and years and filling gaps. See [Why PPI and not BJS](#why-ppi-and-not-bjs-for-population-counts). | 1978–2024 | `data-raw/ppi/incarceration_supervision_by_state_1978_2024.xlsx` ([download from PPI](https://www.prisonpolicy.org/data/incarceration_supervision_by_state_1978_2024.xlsx)) |
-| [Bureau of Justice Statistics](https://bjs.ojp.gov/) *Probation and Parole in the United States* | **Admissions** (BJS calls them "entries") and **exits** for community supervision, probation, and parole. | 2012–2023 | `data-raw/ppus12/` … `data-raw/ppus23/` (appendix tables), cleaned into `data/bjs_data_raw.csv` |
+| [Bureau of Justice Statistics](https://bjs.ojp.gov/) *Probation and Parole in the United States* | **Admissions** (BJS calls them "entries") and **exits** for community supervision, probation, and parole. | 2012–2024 | `data-raw/ppus12/` … `data-raw/ppus24/` (appendix tables), cleaned into `data/bjs_data_raw.csv` |
 | BJS probation and parole dashboards | Demographic and case characteristics (sex, race, offense, and so on). Scraped, and loaded by the app, but **not yet shown in any tab**. | 1994–2022 | `data-raw/probation-demographic-data/`, `data-raw/parole-demographic-data/`, `data/bjs_*_characteristics_data.csv.gz` |
 | U.S. Census boundaries | State geometries for the map. | n/a | `data/states_sf.rds` (an `sf` object in EPSG:4326, joined on `state_name`) |
 
@@ -71,17 +71,17 @@ This reasoning is shown in the app on the Home tab (a short callout) and in **Ab
 - PPI's series is more reliable for state trends, but not perfect. PPI itself says Alaska, Idaho, Nevada, and West Virginia remain uncertain; Utah's 2022 to 2024 figures are a clear underestimate (state corrections department only); Georgia's probation rate is likely inflated by duplicate records; and private and local probation coverage is still incomplete in several states.
 - Counts in the dashboard may not match BJS's published tables, and BJS's own rates use adult residents rather than all residents.
 - **Admissions and exits are not corrected.** PPI's state dataset covers population counts only, so admissions and exits come straight from BJS's imputed series and may carry some of the same issues. They will not always reconcile with the corrected population counts.
-- If PPI publishes a new version of its workbook, re-read the table above and the "21 states" figure (see `ppi_vs_bjs_df` and the Home callout in `app.R`) and update them if PPI's report changes.
+- If PPI publishes a new version of its workbook, re-read the table above and update the PPI facts in the `ppi_source` block at the top of `app.R` (the report's title, author and date, and the "21 states" figure, which feed the Home callout, `ppi_vs_bjs_df` and the About text). The Illinois example in the table is recomputed from the workbook.
 
 ### Coverage
 
-*As of the current data (PPI workbook version 1.0, last updated June 2, 2026; BJS through 2023).*
+*As of the current data (PPI workbook version 1.0, last updated June 2, 2026; BJS through 2024). The same table is built live from the data in the app (About → Data Dictionary → "What data are available?"), so it updates itself after a refresh; this copy is a snapshot and should be re-pasted from the app when you refresh.*
 
 | Supervision type | Population | Admissions and exits | Notes |
 |---|---|---|---|
-| Community Supervision, Probation, Parole | 1978–2024 | 2012–2023 | Population is complete for all 50 states, D.C., and the federal system in every year. Admissions and exits are missing for a few state-years (for example Georgia and Michigan in 2016; Alaska and Oregon in 2015). |
+| Community Supervision, Probation, Parole | 1978–2024 | 2012–2024 | Population is complete for all 50 states, D.C., and the federal system in every year. Admissions and exits are missing for six state-years (Oklahoma in 2013, Alaska and Oregon in 2015, Georgia and Michigan in 2016, Nevada in 2020 for admissions only), which understates national totals in those years. |
 | Prison | 1978–2024 | not available | Complete through 2023. In 2024, six states (Alaska, Connecticut, Delaware, Hawaii, Rhode Island, Vermont) have no prison figure. |
-| Jail Custody, Jail Jurisdiction | 1978–2024 | not available | Complete through 2019. From 2020 on, only 20–26 of the 51 jurisdictions (50 states and D.C.) have data in a given year. |
+| Jail Custody, Jail Jurisdiction | 1978–2024 | not available | Complete through 2019 (apart from Alaska in 1993). From 2020 on, only 20–26 of the 51 jurisdictions (50 states and D.C.) have data in a given year. |
 | Total Incarceration | 1978–2024 | not available | Complete through 2019. From 2020 on, only 26 of 51 jurisdictions, because it needs both jail and prison figures. |
 
 Because of these gaps, the Home tab and the trend charts focus on probation and parole. Treat national incarceration totals from 2020 onward with caution.
@@ -96,7 +96,7 @@ Because of these gaps, the Home tab and the trend charts focus on probation and 
 - **National Mean and National Median** (State Dashboard) are calculated across the states and D.C. only. The mean is unweighted; the median is weighted by state population (`matrixStats::weightedMedian`).
 - **Main Dashboard aggregation:** when a year range is selected, each state's yearly values are summarized with the chosen statistic (mean, median, minimum, maximum, or sum for totals). For per-capita medians, each year is weighted by that year's population.
 - **Map shading:** states with no data for the current filters are drawn as 0 (the lightest shade). Check the Table to tell a true zero from missing data.
-- **Percent change since 2019** (Home tab, Trend 2) is `count ÷ count in 2019 − 1` for each series, so 0% means no change from 2019 and −10% means 10% fewer people than in 2019. The comparison year is `base_year` in `landing_stats`.
+- **Percent change since 2019** (Home tab, Trend 2) is `count ÷ count in 2019 − 1` for each series, so 0% means no change from 2019 and −10% means 10% fewer people than in 2019. The comparison year is `home_base_year` at the top of `app.R`.
 - **People on both probation and parole** are counted in each, so they appear twice in the Community Supervision total.
 
 ### Data dictionary
@@ -213,25 +213,39 @@ flowchart LR
 ### Refreshing PPI population data
 
 1. Download the new workbook from PPI into `data-raw/ppi/`.
-2. If the file name changed, update the path in the `ppi_data` block of `app.R`. The app expects a sheet named `data` whose header row starts with `state_name`, with the columns listed in the [data dictionary](#data-dictionary).
-3. Check `available_years` and the Home tab, which pick up the new years automatically.
+2. The app expects a sheet named `data` whose header row starts with `state_name`, with the columns listed in the [data dictionary](#data-dictionary).
+3. Update the `ppi_source` block at the top of `app.R` (workbook file name, and the PPI report's title, author, date and "corrected states" count if there is a new report). This block is the only place those facts are typed.
+4. Check `available_years` and the Home and About tabs, which pick up the new years automatically (see [How the Home and About text stays in step with the data](#how-the-home-and-about-text-stays-in-step-with-the-data)).
 
 ### Refreshing BJS admissions and exits
 
 1. Add the new report's appendix tables to a new `data-raw/ppusYY/` folder. Files are named like `ppus23at05.csv` (appendix table 5 of the 2023 report). The tables can be **CSV or Excel** (`.csv`, `.xlsx`, `.xls`), and a folder can mix the two. If the same table is saved in more than one format, the script uses one copy (CSV first, then `.xlsx`, then `.xls`). For Excel files, put the table on the first sheet.
 2. Run `R/read-and-clean-bjs-data.R` to rebuild `data/bjs_data_raw.csv`. The script writes to the internal Postgres database as well, so set `REFORM_DB_HOST`, `REFORM_DB_USER`, and `REFORM_DB_PASSWORD` (and optionally `REFORM_DB_PORT`) in your user-level `~/.Renviron` first. Do not put them in the repo's `.Renviron`.
-3. Confirm that the latest year and state coverage look right (see the checklist below).
+3. Confirm that the latest year and state coverage look right (see the checklist below). The cleaning script drops a stray footnote letter from state names (the 2024 table printed "Delawared"), and the app repairs any that remain at start-up and says so in its log.
 
 ### Checklist after any data refresh
 
 - [ ] The app starts and every tab loads.
-- [ ] Home tab numbers look plausible. They are computed live from the data in the `Home Page Data` section of `app.R`.
-- [ ] Re-read the **editorial text**, which the code does not update for you:
-  - the Home headlines and framing sentences (for example "grew nearly fourfold", "more than tenfold", and the Trend 2 sentence "Both populations are smaller than before the pandemic"; the Trend 2 headline itself is built from the data),
-  - the PPI-versus-BJS explanation (the Home callout, `ppi_vs_bjs_df`, and the About → Sources & Caveats text), which cites figures from PPI's June 2, 2026 report and should be re-checked if PPI revises its report or workbook, and
-  - the hard-coded facts in the About tab (`coverage_df`, `controls_df`, and the "Watch out for" notes in the `about_tab` cards): the jail and prison coverage numbers, the states with missing data, and the 2012 default year range.
-- [ ] Update the 2019 comparison year (`base_year` in `landing_stats`) if you want a different reference point. The Trend 2 chart, its headline, and the text around it all use it.
+- [ ] The app log shows no `Home and About text: ... check(s) failed` warning. If one appears, it names the hand-written sentence or source detail that no longer matches the data (see `home_check_claims()`).
+- [ ] The Home tab numbers look plausible. They, the years, the coverage table, the missing state-years, the Illinois example and the wording that depends on a number (up or down, "nearly fourfold", "gradual, then sharper") are all computed live from the data.
+- [ ] Update the `ppi_source` block at the top of `app.R` if PPI released a new workbook or report, and `home_base_year` if you want a different comparison year.
+- [ ] Re-read the **editorial text**, which the code does not rewrite for you: the Home framing sentences, the glossary, and the PPI examples quoted in `ppi_vs_bjs_df` (Tennessee, New Jersey, Delaware and similar), which come from PPI's report and are not recomputed.
 - [ ] Regenerate `manifest.json` (see [Deployment](#deployment)).
+
+## How the Home and About text stays in step with the data
+
+Every number in the Home and About text is looked up from the data rather than typed, in the way an R Markdown report uses inline code: years (`landing_stats$first_year`, `$latest_year`, `$bjs_first_year`, `$bjs_year`), counts, percent changes, the state with the highest and lowest rates, the coverage table (`coverage_note()`), the missing admissions and exits state-years (`bjs_gaps`) and PPI's Illinois example (`il_from`, `il_to`). Words that depend on a number are chosen from it too: "up" or "down", "nearly fourfold" (`fold_phrase()`), "gradual, then sharper", "about half of states", and whether a one-year dip in the national lines is "largely" or "partly" explained by missing states.
+
+What is still typed:
+
+| What | Where | Why |
+|---|---|---|
+| PPI workbook name; PPI report title, author, date; "21 states corrected"; the report's Illinois comparison years and the uncorrected BJS change | `ppi_source` at the top of `app.R` | Stated in PPI's report, not in the workbook. |
+| The reference year for "since ..." comparisons | `home_base_year` | A choice, not a statistic. |
+| The other PPI examples (Tennessee, New Jersey, Delaware, Utah, and so on) | `ppi_vs_bjs_df` and the About → Sources & Caveats text | Quoted from PPI's report. |
+| Definitions and framing sentences | Throughout | Editorial. |
+
+Two safeguards cover the typed parts. `home_check_claims()` runs when the app starts and prints a warning to the log for each hand-written statement or source detail that no longer matches the data (for example a BJS state name that is not a PPI jurisdiction, or a workbook file name whose years differ from the data). And the app repairs a stray footnote letter on a BJS state name (the 2024 BJS table printed "Delawared") and reports it, so a footnote can never split a state in two.
 
 ## How the app is built
 
@@ -240,7 +254,8 @@ flowchart LR
 | Section | What it does |
 |---|---|
 | `Prep for App` | Reads and tidies the PPI workbook, BJS data, and geometries; builds `ppi_bjs_data`; defines the theme and the map basemap helper. |
-| `Home Page Data` | Builds `landing_trend`, `landing_state_rates`, `landing_admissions`, `landing_change` (percent change since the base year, for Trend 2), and the `landing_stats` list that feeds the Home text and tiles. |
+| `Settings to Review When the Sources Are Updated` | `ppi_source` (workbook file name and the facts from PPI's report that cannot be computed) and `home_base_year`. The only typed source facts. |
+| `Home Page Data` | Builds `landing_trend`, `landing_state_rates`, `landing_admissions`, `landing_change` (percent change since the base year, for Trend 2), the `landing_stats` list that feeds the Home text and tiles, the coverage and gap facts behind the About coverage table, the number-dependent wording (`trend1_head`, `trend1_decline`, `trend2_intro`, `trend3_head`), and `home_check_claims()`. |
 | `Home & About Page Content` | Page styles (`landing_css`), small HTML helpers, the About tables (`glossary_df`, `fields_df`, `coverage_df`, `controls_df`, `ppi_vs_bjs_df`), and the `home_tab` and `about_tab` objects. |
 | `UI` | A `navbarPage` (`id = "main_nav"`) with tabs Home, Main Dashboard, State Dashboard, National Dashboard, About. |
 | `Server` | One block of outputs per tab. |

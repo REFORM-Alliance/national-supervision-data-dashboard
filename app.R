@@ -22,13 +22,32 @@ library(readxl)
 library(data.table)
 
 
+####Settings to Review When the Sources Are Updated####
+# Everything on the Home and About tabs is computed from the data (years, counts,
+# coverage, percent changes, state gaps). The few facts that CANNOT be computed from
+# the data files are kept here, in one place, so a yearly update means editing this
+# block and nothing else:
+#   * which PPI workbook and report the data came from, and what that report says
+#   * the reference year used for "since ..." comparisons on the Home tab
+ppi_source <- list(
+  workbook = "incarceration_supervision_by_state_1978_2024.xlsx",   # file in data-raw/ppi/
+  report_url = "https://www.prisonpolicy.org/blog/2026/06/02/supervision/",
+  report_title = "Probation and parole trends by state: A look back at the data on 'alternatives' to incarceration",
+  report_author = "Jacob Kang-Brown",
+  report_date = as.Date("2026-06-02"),
+  states_corrected = 21,        # "corrections for 21 states" -- stated in PPI's report, not in the workbook
+  illinois_years = c(2009, 2024),   # years PPI's report uses for its Illinois example
+  illinois_bjs_change = -0.42       # "uncorrected BJS data ... cut its rate by 42%" -- PPI's figure
+)
+home_base_year <- 2019   # reference year for "since ..." comparisons on the Home tab (a choice, not a statistic)
+
 ####Prep for App####
 ##PPI Data
-ppi_data <- 
-  "data-raw" %>% 
-  here("ppi") %>% 
-  here("incarceration_supervision_by_state_1978_2024.xlsx") %>% 
-  read_excel(sheet = "data") %>% 
+ppi_data <-
+  "data-raw" %>%
+  here("ppi") %>%
+  here(ppi_source$workbook) %>%
+  read_excel(sheet = "data") %>%
   set_names(paste0("x", 1:ncol(.))) %>% 
   clean_names() %>% 
   mutate(keep = 
@@ -54,6 +73,27 @@ bjs_data_raw <-
   here("bjs_data_raw.csv") %>%
   fread(sep = ",", header = TRUE, stringsAsFactors = FALSE) %>%
   clean_names()
+
+# BJS appendix tables sometimes glue a footnote letter onto a jurisdiction name (the
+# 2024 table prints "Delawared" for Delaware plus note d), which would split one state
+# into two. Any BJS name that is not a PPI jurisdiction but matches one once a trailing
+# letter is dropped is repaired here, so a footnote can never create a phantom state.
+known_jurisdictions <- c(unique(ppi_data$state_name), "U.S. Total", "State Total", "Federal")
+bjs_name_fixes <-
+  bjs_data_raw %>%
+  distinct(state) %>%
+  filter(!(state %in% known_jurisdictions)) %>%
+  mutate(fixed = str_remove(state, "[a-z]$")) %>%
+  filter(fixed %in% known_jurisdictions)
+if(nrow(bjs_name_fixes) > 0){
+  message("BJS names repaired (stray footnote letter removed): ",
+          paste0(bjs_name_fixes$state, " -> ", bjs_name_fixes$fixed, collapse = "; "))
+  bjs_data_raw <-
+    bjs_data_raw %>%
+    mutate(state = ifelse(state %in% bjs_name_fixes$state,
+                          bjs_name_fixes$fixed[match(state, bjs_name_fixes$state)],
+                          state))
+}
 
 bjs_data_filtered <-
   bjs_data_raw %>%
@@ -196,10 +236,13 @@ available_years <-
 
 
 ####Home Page Data####
-# Everything on the Home tab is computed from ppi_bjs_data, the same object the
-# other tabs use, so the numbers on Home always match the dashboards. If the
-# data are refreshed the figures update automatically. The *headlines* and
-# framing sentences are editorial, though -- re-read them after a data refresh.
+# Everything on the Home and About tabs is computed from ppi_bjs_data, the same object
+# the other tabs use, so the numbers in the text always match the dashboards: years,
+# counts, percent changes, state rankings, coverage and the missing state-years. When
+# the data are refreshed the text updates itself. Wording that depends on a number
+# (up/down, "nearly fourfold", "gradual then sharper") is chosen from the data too.
+# What is left typed is either editorial framing or a fact from PPI's report; those
+# live in `ppi_source` (top of this file) and are checked by home_check_claims() below.
 
 supervision_types <- c("Community Supervision", "Probation", "Parole")
 
@@ -216,6 +259,27 @@ fmt_million <- function(x, digits = 1) paste0(formatC(x / 1e6, format = "f", dig
 fmt_pct     <- function(x, digits = 0) paste0(formatC(abs(x) * 100, format = "f", digits = digits), "%")
 dir_word    <- function(x, up = "risen", down = "fallen") ifelse(x >= 0, up, down)
 vs_word     <- function(x) ifelse(x >= 0, "above", "below")
+fmt_list    <- function(x) {          # "A", "A and B", "A, B, and C"
+  x <- as.character(x)
+  if (length(x) <= 1) return(x)
+  if (length(x) == 2) return(paste(x, collapse = " and "))
+  paste0(paste(x[-length(x)], collapse = ", "), ", and ", x[length(x)])
+}
+fmt_range   <- function(x, sep = " to ") {   # c(20, 26) -> "20 to 26"; c(26, 26) -> "26"
+  x <- range(x)
+  if (x[1] == x[2]) as.character(x[1]) else paste0(x[1], sep, x[2])
+}
+num_words   <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
+# "nearly fourfold" (3.83), "more than tenfold" (11.7), "about 1.3 times" (1.3)
+fold_phrase <- function(x) {
+  if (x < 1.5) return(paste0("about ", formatC(x, format = "f", digits = 1), " times"))
+  n <- floor(x)
+  if (n >= 10) {                                                        # 10-19 -> tenfold, 20-29 -> 20-fold, ...
+    n10 <- 10 * floor(n / 10)
+    return(if (n10 == 10) "more than tenfold" else paste0("more than ", n10, "-fold"))
+  }
+  if (x - n >= 0.8) paste0("nearly ", num_words[n + 1], "fold") else paste0("more than ", num_words[n], "fold")
+}
 
 # National population by supervision type and year. Mirrors the National
 # Dashboard: states + D.C. + the federal system in the count, with the federal
@@ -267,7 +331,8 @@ landing_stats <- local({
   
   latest_year <- max(cs$year)
   first_year  <- min(cs$year)
-  base_year   <- 2019   # "pre-pandemic" reference year used in the Home text
+  base_year   <- home_base_year   # reference year for "since ..." comparisons (set at the top of this file)
+  ann         <- function(a, b) if (b > a) (cs$count[cs$year == b] / cs$count[cs$year == a])^(1 / (b - a)) - 1 else NA_real_   # average change per year
   peak        <- cs %>% slice_max(count, n = 1, with_ties = FALSE)
   latest      <- cs %>% filter(year == latest_year)
   low_year    <- cs %>% filter(year >= base_year) %>% slice_min(count, n = 1, with_ties = FALSE) %>% pull(year)
@@ -279,6 +344,10 @@ landing_stats <- local({
   list(
     latest_year = latest_year, first_year = first_year, base_year = base_year,
     peak_year = peak$year, low_year = low_year, bjs_year = bjs_year,
+    bjs_first_year = min(landing_admissions$year),
+    fold_growth = peak$count / cs$count[cs$year == first_year],
+    ann_peak_to_base = ann(peak$year, base_year),
+    ann_base_to_low = ann(base_year, low_year),
     
     cs_first = cs$count[cs$year == first_year],
     cs_peak = peak$count,
@@ -308,6 +377,233 @@ landing_stats <- local({
   )
 })
 s <- landing_stats   # short alias for the Home-page text below
+
+##Coverage and gap facts (feed the About tab and a few Home sentences)
+# The 50 states + D.C. as PPI names them (the federal system and PPI's national row are separate).
+landing_jurisdictions <-
+  ppi_data %>%
+  filter(!is.na(state_name), !(state_name %in% c("United States", "Federal"))) %>%
+  pull(state_name) %>%
+  unique() %>%
+  sort()
+n_jur <- length(landing_jurisdictions)
+num_word <- function(k) if (k >= 1 && k <= 10) num_words[k] else as.character(k)
+
+# Which jurisdiction-years have a PPI population figure, by supervision type
+ppi_pop_have <-
+  ppi_bjs_data %>%
+  filter(data_source == "PPI", outcome_category == "Population", state_name %in% landing_jurisdictions) %>%
+  mutate(year = as.numeric(year)) %>%
+  distinct(control_type, state_name, year)
+
+ppi_pop_years <- function(type) {
+  y <- ppi_pop_have$year[ppi_pop_have$control_type == type]
+  paste0(min(y), "–", max(y))
+}
+
+ppi_pop_missing <- function(type) {   # jurisdiction-years with no figure, within that type's span of years
+  have <- ppi_pop_have %>% filter(control_type == type)
+  tidyr::expand_grid(state_name = landing_jurisdictions, year = seq(min(have$year), max(have$year))) %>%
+    anti_join(have, by = c("state_name", "year"))
+}
+
+# "Alaska in 1993", "Georgia and Michigan in 2016", "five jurisdictions in 2024"
+gap_phrase <- function(gaps) {
+  if (nrow(gaps) == 0) return(character(0))
+  by_year <- gaps %>% group_by(year) %>% dplyr::summarize(k = n(), who = list(state_name), .groups = "drop") %>% arrange(year)
+  vapply(seq_len(nrow(by_year)), function(i) {
+    paste0(if (by_year$k[i] <= 3) fmt_list(by_year$who[[i]]) else paste(num_word(by_year$k[i]), "jurisdictions"),
+           " in ", by_year$year[i])
+  }, character(1))
+}
+
+# One coverage note for a supervision type: where coverage is complete, what is missing, and from when
+coverage_note <- function(type, thing, tail_extra = ", so national or multi-state totals are not comparable to earlier years.") {
+  have_n <- ppi_pop_have %>% filter(control_type == type) %>% dplyr::count(year) %>% arrange(year)
+  miss   <- ppi_pop_missing(type)
+  full_years <- have_n$year[have_n$n == n_jur]
+  last_full  <- if (length(full_years)) max(full_years) else NA_real_
+  late  <- if (is.na(last_full)) miss else miss %>% filter(year > last_full)
+  early <- if (is.na(last_full)) miss[0, ] else miss %>% filter(year <= last_full)
+  late_years <- sort(unique(late$year))
+  late_n <- have_n$n[have_n$year %in% late_years]
+  early_txt <- if (nrow(early) == 0) "" else {
+    ph <- gap_phrase(early)
+    if (length(ph) <= 3) paste0(" (apart from ", fmt_list(ph), ")") else paste0(" (apart from ", length(ph), " years with a few jurisdictions missing)")
+  }
+  head_txt <-
+    if (is.na(last_full)) paste0("Not complete in any year (", fmt_range(have_n$n), " of ", n_jur, " jurisdictions).")
+  else if (length(late_years) == 0 && nrow(early) == 0) "Complete in every year."
+  else paste0("Complete through ", last_full, early_txt, ".")
+  tail_txt <-
+    if (length(late_years) == 0) ""
+  else if (length(late_years) == 1) {
+    who <- unique(late$state_name); k <- length(who)
+    unit <- if ("District of Columbia" %in% who) "jurisdiction" else "state"
+    paste0(" In ", late_years, ", ", num_word(k), " ", unit, if (k != 1) "s", if (k <= 8) paste0(" (", fmt_list(who), ")"),
+           " ", if (k == 1) "has" else "have", " no ", thing, " figure, so ", late_years, " national ", thing, " totals are understated.")
+  } else {
+    paste0(" From ", min(late_years), " on, only ", fmt_range(late_n), " of the ", n_jur, " jurisdictions (",
+           n_jur - 1, " states and D.C.) have data in a given year", tail_extra)
+  }
+  list(note = paste0(head_txt, tail_txt), last_full = last_full, late_years = late_years, late_n = late_n,
+       late_states = unique(late$state_name), n_by_year = have_n)
+}
+
+cov_prison <- coverage_note("Prison", "prison")
+cov_jail   <- coverage_note("Jail Custody", "jail")
+cov_jail_j <- coverage_note("Jail Jurisdiction", "jail")
+cov_total  <- coverage_note("Total Incarceration", "incarceration",
+                            tail_extra = ", because it requires both jail and prison figures.")
+
+# Is population complete for every state, D.C. and the federal system in every year?
+cs_missing <-
+  bind_rows(lapply(supervision_types, function(t) ppi_pop_missing(t) %>% mutate(control_type = t))) %>%
+  distinct(state_name, year)
+fed_have <-
+  ppi_bjs_data %>%
+  filter(data_source == "PPI", outcome_category == "Population", state_name == "Federal", control_type %in% supervision_types) %>%
+  mutate(year = as.numeric(year)) %>%
+  distinct(control_type, year)
+fed_missing_n <- sum(vapply(supervision_types, function(t) {
+  length(setdiff(seq(s$first_year, s$latest_year), fed_have$year[fed_have$control_type == t]))
+}, numeric(1)))
+cs_complete <- nrow(cs_missing) == 0 && fed_missing_n == 0
+cs_pop_note <- (
+  if (cs_complete) paste0("Population is complete for all ", n_jur - 1, " states, D.C., and the federal system in every year.")
+  else paste0("Population has gaps: ", nrow(cs_missing) + fed_missing_n, " state-year", if (nrow(cs_missing) + fed_missing_n != 1) "s",
+              " are missing", if (nrow(cs_missing) > 0) paste0(" (for example, ", gap_phrase(cs_missing)[1], ")"), ".")
+)
+
+# BJS admissions and exits: which state-years are missing from the community supervision series?
+bjs_cs <-
+  ppi_bjs_data %>%
+  filter(data_source == "BJS", control_type == "Community Supervision", state_name %in% landing_jurisdictions) %>%
+  mutate(year = as.numeric(year))
+bjs_gaps <-
+  tidyr::expand_grid(state_name = landing_jurisdictions, year = seq(min(bjs_cs$year), max(bjs_cs$year)),
+                     outcome_category = c("Admissions", "Exits")) %>%
+  anti_join(bjs_cs %>% distinct(state_name, year, outcome_category), by = c("state_name", "year", "outcome_category"))
+bjs_gap_state_years <- bjs_gaps %>% distinct(state_name, year)
+
+# The gap year that matters most for national totals: the one where the missing states would
+# have added the most admissions (judged by their own counts in the years either side).
+bjs_gap_example <- local({
+  adm <- bjs_cs %>% filter(outcome_category == "Admissions")
+  gy  <- bjs_gaps %>% filter(outcome_category == "Admissions") %>% group_by(year) %>% dplyr::summarize(states = list(state_name), .groups = "drop")
+  if (nrow(gy) == 0) return(NULL)
+  tot <- adm %>% group_by(year) %>% dplyr::summarize(total = sum(count, na.rm = TRUE), .groups = "drop")
+  rows <- lapply(seq_len(nrow(gy)), function(i) {
+    y <- gy$year[i]; st <- gy$states[[i]]
+    expected <- sum(vapply(st, function(x) mean(adm$count[adm$state_name == x & adm$year %in% c(y - 1, y + 1)]), numeric(1)), na.rm = TRUE)
+    dip <- mean(tot$total[tot$year %in% c(y - 1, y + 1)]) - tot$total[tot$year == y]
+    tibble(year = y, states = list(st), expected = expected, explained = if (dip > 0) expected / dip else NA_real_)
+  }) %>% bind_rows()
+  top <- rows %>% slice_max(expected, n = 1, with_ties = FALSE)
+  list(year = top$year, states = top$states[[1]], explained = top$explained)
+})
+bjs_gap_example_txt <- if (is.null(bjs_gap_example)) NULL else paste0(fmt_list(bjs_gap_example$states), " in ", bjs_gap_example$year)
+bjs_gap_sentence <- (
+  if (nrow(bjs_gap_state_years) == 0) "Admissions and Exits are reported for every state in every year."
+  else paste0("Admissions and Exits are missing for ", num_word(nrow(bjs_gap_state_years)), " state-year",
+              if (nrow(bjs_gap_state_years) != 1) "s", " (for example, ", bjs_gap_example_txt,
+              "), which understates national totals in those years.")
+)
+# Only say the missing states explain a dip in the national line if their own counts are big enough to do so
+bjs_gap_watch <-
+  if (is.null(bjs_gap_example) || is.na(bjs_gap_example$explained) || bjs_gap_example$explained < 0.25) {
+    "Some states are missing from the admissions and exits series in some years, which can make the national lines dip."
+  } else {
+    paste0("The national admissions and exits lines dip in ", bjs_gap_example$year,
+           if (bjs_gap_example$explained >= 0.5) " largely" else " partly", " because ",
+           fmt_list(bjs_gap_example$states), if (length(bjs_gap_example$states) == 1) " is" else " are", " missing that year.")
+  }
+
+# Jail and prison numbers used in the "Ways to use it" notes
+jail_gap_start <- min(cov_jail$late_years)
+jail_share_txt <- local({
+  share <- mean(cov_jail$late_n) / n_jur
+  if (share >= 0.4 && share <= 0.6) "about half" else paste0(round(100 * share), "%")
+})
+
+# PPI's Illinois example, recomputed from the data the dashboard uses
+illinois_ppi <-
+  ppi_bjs_data %>%
+  filter(data_source == "PPI", state_name == "Illinois", control_type == "Community Supervision", outcome_category == "Population") %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(year %in% ppi_source$illinois_years) %>%
+  arrange(year)
+il_from <- illinois_ppi$rate[1]; il_to <- illinois_ppi$rate[2]; il_chg <- il_to / il_from - 1
+
+##Wording that depends on the numbers
+# Trend 1: how far it grew, and whether it has since reversed
+trend1_head <-
+  paste0("Supervision grew ",
+         if (s$fold_growth >= 1.5) fold_phrase(s$fold_growth) else fmt_pct(s$fold_growth - 1),
+         if (s$cs_latest >= 0.9995 * s$cs_peak) " and is at its highest point" else ", then reversed")
+trend1_decline <- local({
+  gradual <- !is.na(s$ann_peak_to_base) && !is.na(s$ann_base_to_low) && s$peak_year < s$base_year && s$low_year > s$base_year &&
+    s$chg_base_to_low < 0 && abs(s$ann_peak_to_base) < abs(s$ann_base_to_low)
+  if (s$low_year == s$base_year) {
+    paste0("Since ", s$base_year, " the total has ", dir_word(s$chg_base_to_latest), " by ", fmt_pct(s$chg_base_to_latest, 1), ".")
+  } else {
+    paste0(if (gradual) paste0("The decline was gradual from ", s$peak_year, " to ", s$base_year, " (about ", fmt_pct(s$ann_peak_to_base, 1),
+                               " a year) and then sharper: between ", s$base_year, " and ", s$low_year, " the total ")
+           else paste0("Between ", s$base_year, " and ", s$low_year, " the total "),
+           dir_word(s$chg_base_to_low, "rose", "fell"), " ", fmt_pct(s$chg_base_to_low),
+           if (gradual) paste0(" (about ", fmt_pct(s$ann_base_to_low, 1), " a year)"), ". ",
+           if (s$low_year == s$latest_year) paste0(s$latest_year, " is the lowest point since ", s$base_year, ".")
+           else paste0("Since ", s$low_year, " it has ", dir_word(s$chg_low_to_latest), " by ", fmt_pct(s$chg_low_to_latest, 1), "."))
+  }
+})
+# Trend 2: are both groups below the reference year?
+trend2_intro <-
+  if (s$prob_chg_base < 0 && s$parole_chg_base < 0) {
+    paste0("Both populations are smaller than ", if (s$base_year < 2020) "before the pandemic" else paste0("in ", s$base_year),
+           ", but not by the same amount.")
+  } else paste0("The two populations have moved differently since ", s$base_year, ".")
+# Trend 3: how big the gap between states is
+trend3_head <- paste0("Where you live matters: state rates differ ", fold_phrase(s$state_ratio))
+
+##Checks on the sentences that are still written by hand
+# Printed once at start-up (see the app log). Nothing here changes what the app does; a warning
+# means a hand-written sentence or a source detail may no longer match the data -- reword it,
+# or update `ppi_source` at the top of this file.
+home_check_claims <- function() {
+  chk <- function(x) tryCatch(isTRUE(x), error = function(e) FALSE)   # a claim that cannot be tested counts as not holding
+  bjs_names <- unique(ppi_bjs_data$state_name[ppi_bjs_data$data_source == "BJS"])
+  named_states <- c("Alaska", "Idaho", "Nevada", "West Virginia", "Utah", "Georgia", "Oklahoma", "Tennessee", "Virginia",
+                    "Illinois", "New Jersey", "Delaware", "New York", "California", "Maryland", "Pennsylvania")
+  claims <- c(
+    "Every BJS state name matches a PPI jurisdiction (a stray footnote letter would split a state in two)" =
+      chk(all(bjs_names %in% c(landing_jurisdictions, "Federal"))),
+    "The PPI workbook file name spans the same years as the data" =
+      chk(grepl(paste0(s$first_year, "_", s$latest_year), ppi_source$workbook, fixed = TRUE)),
+    "The Home-page reference year is inside the data and before the latest year" =
+      chk(s$base_year >= s$first_year && s$base_year < s$latest_year),
+    "Admissions and exits start after the first year of population data (the About text says the dashboards open on the first BJS year)" =
+      chk(s$bjs_first_year > s$first_year),
+    "Jail Custody and Jail Jurisdiction have the same coverage (they share one row of the coverage table)" =
+      chk(identical(cov_jail$note, cov_jail_j$note)),
+    "Jail and total incarceration lose coverage in the same year (the text treats them together)" =
+      chk(min(cov_jail$late_years) == min(cov_total$late_years)),
+    "The community supervision peak comes before the Home-page reference year (the text describes a decline since the peak)" =
+      chk(s$peak_year < s$base_year),
+    "The federal system has probation and parole population in the latest year (the glossary says it is reported on its own line)" =
+      chk(all(c("Probation", "Parole") %in% fed_have$control_type[fed_have$year == s$latest_year])),
+    "States named in the hand-written PPI notes are all jurisdictions in the data" = chk(all(named_states %in% landing_jurisdictions)),
+    "PPI's Illinois example: the corrected change is smaller than the uncorrected BJS change quoted from the report" =
+      chk(abs(il_chg) < abs(ppi_source$illinois_bjs_change)),
+    "PPI's count of corrected states is no more than the number of jurisdictions" = chk(ppi_source$states_corrected <= n_jur)
+  )
+  failed <- names(claims)[!claims]
+  if (length(failed) > 0) {
+    warning("Home and About text: ", length(failed), " check(s) failed. Re-read the related sentences (see home_check_claims() in app.R):\n  - ",
+            paste(failed, collapse = "\n  - "), call. = FALSE, immediate. = TRUE)
+  }
+  invisible(claims)
+}
+home_claims <- home_check_claims()
 
 # Percent change since the base year for the "probation vs. parole" chart.
 # 0 = same as the base year; -0.10 = 10% fewer people than in the base year.
@@ -492,7 +788,7 @@ glossary_df <- tibble::tribble(
   "Outcome Measures", "Population",
   "A snapshot count of how many people are under a given type of control at a point in time. Timing varies: community supervision counts are generally as of the end of the year (January 1 of the following year), prison counts are year-end, and jail counts are generally mid-year.",
   "Outcome Measures", "Admissions",
-  paste0("People starting a new term of a given type of supervision during the year (BJS calls these 'entries'). Available only for Community Supervision, Probation, and Parole, 2012–", landing_stats$bjs_year, "."),
+  paste0("People starting a new term of a given type of supervision during the year (BJS calls these 'entries'). Available only for Community Supervision, Probation, and Parole, ", landing_stats$bjs_first_year, "–", landing_stats$bjs_year, "."),
   "Outcome Measures", "Exits",
   "People leaving a given type of supervision during the year — by completing their term, being revoked to incarceration, absconding, dying, or for other reasons (BJS calls these 'exits'). Same coverage as Admissions.",
   "Outcome Measures", "Stock vs. flow",
@@ -514,7 +810,7 @@ glossary_df <- tibble::tribble(
   "Metrics & Aggregation", "Per Capita (Rate per 100,000)",
   "Total Count divided by the state's resident population (all ages), multiplied by 100,000. Use this to fairly compare states of very different sizes. Because the denominator includes children, these rates are lower than the per-adult rates BJS publishes.",
   "Metrics & Aggregation", "Aggregation Type (Mean / Median / Min / Max / Sum)",
-  "When viewing a range of years in the Main Dashboard, this is the statistic used to summarize multiple years into a single value per state (for example, the average rate from 2012–2024). Sum is offered only for Total Count.",
+  paste0("When viewing a range of years in the Main Dashboard, this is the statistic used to summarize multiple years into a single value per state (for example, the average rate from ", landing_stats$bjs_first_year, "–", landing_stats$latest_year, "). Sum is offered only for Total Count."),
   "Metrics & Aggregation", "National Mean",
   "The simple (unweighted) average across the states and D.C. — every state counts equally regardless of population size. The federal system is not included.",
   "Metrics & Aggregation", "National Median",
@@ -524,11 +820,11 @@ glossary_df <- tibble::tribble(
   
   # -- Data and sources --
   "Data & Sources", "Prison Policy Initiative (PPI)",
-  paste0("Source of every population count, 1978–", landing_stats$latest_year, ". PPI builds on BJS data, harmonizing definitions across states and years and filling gaps where BJS data were missing, inconsistent, or known to be inaccurate."),
+  paste0("Source of every population count, ", landing_stats$first_year, "–", landing_stats$latest_year, ". PPI builds on BJS data, harmonizing definitions across states and years and filling gaps where BJS data were missing, inconsistent, or known to be inaccurate."),
   "Data & Sources", "Why PPI and not BJS for population counts?",
   "BJS is the official federal source, but its published state probation and parole counts have known problems: private probation is largely left out, definitions shift from year to year, and imputed or uncorrected values can create false jumps. PPI starts from BJS's data and corrects it using state and local sources, so this dashboard uses PPI's version for every population count. See Sources & Caveats for details.",
   "Data & Sources", "BJS Probation & Parole Surveys",
-  paste0("The Bureau of Justice Statistics' annual surveys of probation and parole agencies. The source of Admissions and Exits data, 2012–", landing_stats$bjs_year, "."),
+  paste0("The Bureau of Justice Statistics' annual surveys of probation and parole agencies. The source of Admissions and Exits data, ", landing_stats$bjs_first_year, "–", landing_stats$bjs_year, "."),
   "Data & Sources", "Imputed vs. Reported",
   "'Reported' figures were submitted directly by a state; 'Imputed' figures are estimated by BJS to fill in for states that didn't report in a given year, so that national totals stay complete. This dashboard uses the imputed series for Admissions and Exits.",
   
@@ -559,7 +855,7 @@ fields_df <- tibble::tribble(
   
   "Year", "Table, year sliders", "Integer",
   "The calendar year of the figure.",
-  paste0("Population: 1978–", landing_stats$latest_year, " (PPI). Admissions and Exits: 2012–", landing_stats$bjs_year, " (BJS). Counting dates differ by supervision type; see 'Population' under Key Terms."),
+  paste0("Population: ", landing_stats$first_year, "–", landing_stats$latest_year, " (PPI). Admissions and Exits: ", landing_stats$bjs_first_year, "–", landing_stats$bjs_year, " (BJS). Counting dates differ by supervision type; see 'Population' under Key Terms."),
   
   "Supervision Type", "Table, filters", "Category",
   "The kind of supervision or incarceration being counted.",
@@ -587,24 +883,24 @@ coverage_df <- tibble::tribble(
   ~`Supervision Type`, ~Population, ~`Admissions & Exits`, ~`Coverage notes`,
   
   "Community Supervision, Probation, Parole",
-  paste0("1978–", landing_stats$latest_year),
-  paste0("2012–", landing_stats$bjs_year),
-  "Population is complete for all 50 states, D.C., and the federal system in every year. Admissions and Exits are missing for a few state-years (for example, Georgia and Michigan in 2016), which understates national totals in those years.",
+  ppi_pop_years("Community Supervision"),
+  paste0(landing_stats$bjs_first_year, "–", landing_stats$bjs_year),
+  paste(cs_pop_note, bjs_gap_sentence),
   
   "Prison",
-  paste0("1978–", landing_stats$latest_year),
+  ppi_pop_years("Prison"),
   "Not available",
-  paste0("Complete through ", landing_stats$latest_year - 1, ". In ", landing_stats$latest_year, ", six states (Alaska, Connecticut, Delaware, Hawaii, Rhode Island, and Vermont) have no prison figure, so ", landing_stats$latest_year, " national prison totals are understated."),
+  cov_prison$note,
   
   "Jail Custody, Jail Jurisdiction",
-  paste0("1978–", landing_stats$latest_year),
+  ppi_pop_years("Jail Custody"),
   "Not available",
-  "Complete through 2019. From 2020 on, only 20 to 26 of the 51 jurisdictions (50 states and D.C.) have data in a given year, so national or multi-state totals are not comparable to earlier years.",
+  cov_jail$note,
   
   "Total Incarceration",
-  paste0("1978–", landing_stats$latest_year),
+  ppi_pop_years("Total Incarceration"),
   "Not available",
-  "Complete through 2019. From 2020 on, only 26 of 51 jurisdictions have data, because it requires both jail and prison figures."
+  cov_total$note
 )
 
 ##Table of controls for the About page
@@ -615,15 +911,20 @@ controls_df <- tibble::tribble(
   "Count or Per Capita", "All dashboards", "Total Count shows raw numbers, so larger states look bigger. Per Capita shows people per 100,000 residents so states of different sizes can be compared fairly.",
   "Date Selection Mode", "Main Dashboard", "Single Year gives a snapshot. Year Range combines several years into one value per state using the Aggregation Type.",
   "Aggregation Type", "Main Dashboard", "How a year range is summarized for each state: Mean, Median, Minimum, Maximum — or Sum when viewing Total Count.",
-  "Year Range", "State and National Dashboards", "Drag the ends of the slider. Population goes back to 1978; Admissions and Exits start in 2012, which is why both dashboards open on 2012 to the latest year.",
+  "Year Range", "State and National Dashboards", paste0("Drag the ends of the slider. Population goes back to ", landing_stats$first_year, "; Admissions and Exits start in ", landing_stats$bjs_first_year, ", which is why both dashboards open on ", landing_stats$bjs_first_year, " to the latest year."),
   "State", "State Dashboard", "The state to compare against the National Mean and National Median.",
   "Table", "Bottom of the Main Dashboard", "Every state-year row behind the current map and bar plot. Search, filter, and download as Copy, CSV, or Excel."
 )
 
 ##Why PPI and not BJS: problems with BJS's published state counts, as documented in
-## PPI's report (Kang-Brown, June 2, 2026), and what PPI did about each. The figures
-## quoted here are PPI's; the dashboard did not re-derive them from BJS's files.
-ppi_report_url <- "https://www.prisonpolicy.org/blog/2026/06/02/supervision/"
+## PPI's report (see ppi_source at the top of this file), and what PPI did about each.
+## The examples quoted here are PPI's; the dashboard did not re-derive them from BJS's
+## files. The one exception is the Illinois example, whose corrected figures are
+## recomputed from the PPI workbook the dashboard uses.
+ppi_report_url      <- ppi_source$report_url
+ppi_report_short    <- sub(":.*$", "", ppi_source$report_title)       # "Probation and parole trends by state"
+ppi_report_cite_day <- paste0(format(ppi_source$report_date, "%B "), as.integer(format(ppi_source$report_date, "%d")), ", ",
+                              format(ppi_source$report_date, "%Y"))    # "June 2, 2026"
 
 ppi_vs_bjs_df <- tibble::tribble(
   ~`Problem in BJS's published state counts`, ~`Example, from PPI's report`, ~`What PPI did`,
@@ -653,8 +954,11 @@ ppi_vs_bjs_df <- tibble::tribble(
   "Used New York State data and interpolated 1987 to 1997.",
   
   "The net effect can be large",
-  "Uncorrected BJS data would suggest that Illinois cut its community supervision rate by 42% from 2009 to 2024.",
-  "PPI's corrected data show a drop of about 3%, from 1,019 to 989 per 100,000 residents."
+  paste0("Uncorrected BJS data would suggest that Illinois ", if (ppi_source$illinois_bjs_change < 0) "cut" else "raised",
+         " its community supervision rate by ", fmt_pct(ppi_source$illinois_bjs_change), " from ", ppi_source$illinois_years[1],
+         " to ", ppi_source$illinois_years[2], "."),
+  paste0("PPI's corrected data show ", if (il_chg < 0) "a drop" else "a rise", " of about ", fmt_pct(il_chg), ", from ",
+         fmt_count(il_from), " to ", fmt_count(il_to), " per 100,000 residents.")
 )
 
 ##Home tab
@@ -692,12 +996,13 @@ home_tab <- tabPanel(
               p(lp_html("Population counts for ", s$first_year, "–", s$latest_year, " come from the ",
                         bold("Prison Policy Initiative (PPI)"), ", which builds on Bureau of Justice Statistics (BJS) ",
                         "data by harmonizing definitions across states and years and filling gaps. Admissions and ",
-                        "exits (2012–", s$bjs_year, ") come from the ", bold("BJS"),
+                        "exits (", s$bjs_first_year, "–", s$bjs_year, ") come from the ", bold("BJS"),
                         " annual Probation and Parole surveys."))),
           div(class = "lp-card",
               h4("What to keep in mind"),
-              p("Probation and parole figures are complete for every state and year, so the trends below ",
-                "focus on them. Incarceration data have gaps — especially jail data since 2020 — so ",
+              p(if (cs_complete) "Probation and parole figures are complete for every state and year, so the trends below focus on them. "
+                else "Probation and parole figures are the most complete in the data, so the trends below focus on them. ",
+                paste0("Incarceration data have gaps — especially jail data since ", jail_gap_start, " — so "),
                 "check the coverage table on the About tab before drawing conclusions. Rates are per 100,000 ",
                 "residents of all ages, not just adults."))
       ),
@@ -709,11 +1014,11 @@ home_tab <- tabPanel(
                     "probation and parole counts have known problems: private probation is largely left out, ",
                     "definitions change from year to year, and imputed or uncorrected values can create false ",
                     "jumps in a state's trend. The Prison Policy Initiative starts from BJS's data and corrects it ",
-                    "using state and local sources, with corrections for 21 states. This dashboard therefore uses ",
+                    "using state and local sources, with corrections for ", ppi_source$states_corrected, " states. This dashboard therefore uses ",
                     "PPI's version for every population count, and BJS only for admissions and exits, which PPI's ",
                     "state dataset does not include. See PPI's report, ",
-                    link_to(ppi_report_url, "Probation and parole trends by state"),
-                    " (Jacob Kang-Brown, June 2, 2026).")),
+                    link_to(ppi_report_url, ppi_report_short),
+                    " (", ppi_source$report_author, ", ", ppi_report_cite_day, ").")),
           p(actionLink("why_ppi_more", "How PPI's numbers differ from BJS's, and what they can't fix →"))
       ),
       
@@ -744,17 +1049,14 @@ home_tab <- tabPanel(
       div(class = "lp-trend",
           div(
             div(class = "lp-trend-num", "Trend 1"),
-            h3("Supervision grew nearly fourfold, then reversed"),
+            h3(trend1_head),
             p(lp_html("The number of people on probation or parole climbed from ", bold(fmt_million(s$cs_first)),
                       " in ", s$first_year, " to a peak of ", bold(fmt_million(s$cs_peak)), " in ", s$peak_year,
                       ". By ", s$latest_year, " it stood at ", bold(fmt_million(s$cs_latest)), ": ",
                       bold(fmt_pct(s$chg_since_peak)), " ", vs_word(s$chg_since_peak), " the peak, or ",
                       bold(fmt_pct(s$chg_rate_since_peak)), " ", vs_word(s$chg_rate_since_peak),
                       " it once adjusted for population growth.")),
-            p(lp_html("The decline was gradual through the 2010s and then sharper: between ", s$base_year, " and ",
-                      s$low_year, " the total ", dir_word(s$chg_base_to_low, "rose", "fell"), " ",
-                      fmt_pct(s$chg_base_to_low), ". Since ", s$low_year, " it has ",
-                      dir_word(s$chg_low_to_latest), " by ", fmt_pct(s$chg_low_to_latest, 1), "."))
+            p(lp_html(trend1_decline))
           ),
           div(
             div(class = "lp-chart-controls",
@@ -779,7 +1081,7 @@ home_tab <- tabPanel(
             div(class = "lp-trend-num", "Trend 2"),
             h3(paste0("Since ", s$base_year, ", parole is ", chg_phrase(s$parole_chg_base),
                       " and probation is ", chg_phrase(s$prob_chg_base))),
-            p(lp_html("Both populations are smaller than before the pandemic, but not by the same amount. In ",
+            p(lp_html(trend2_intro, " In ",
                       s$latest_year, ", about ", bold(fmt_million(s$prob_latest, 2)), " people were on probation, ",
                       bold(fmt_pct(s$prob_chg_base)), " ", vs_word(s$prob_chg_base), " the ", s$base_year,
                       " level, and about ", bold(fmt_count(round(s$parole_latest, -3))), " were on parole, ",
@@ -811,7 +1113,7 @@ home_tab <- tabPanel(
       div(class = "lp-trend",
           div(
             div(class = "lp-trend-num", "Trend 3"),
-            h3("Where you live matters: state rates differ more than tenfold"),
+            h3(trend3_head),
             p(lp_html("In ", s$latest_year, ", ", bold(s$state_hi), " had ", bold(fmt_count(s$state_hi_rate)),
                       " people on community supervision per 100,000 residents — ",
                       bold(paste0(formatC(s$hi_vs_nat, format = "f", digits = 1), " times")),
@@ -874,8 +1176,8 @@ about_tab <- tabPanel(
                        "Home, then the National Dashboard.",
                        c("Read the three trend sections on the Home tab for the headline story.",
                          "Open the National Dashboard and choose Per Capita to remove the effect of population growth, or Total Count to see the number of people.",
-                         "Drag the Year Range slider back to 1978 to see the full history of population. Admissions and exits begin in 2012."),
-                       "The national admissions and exits lines dip in 2016 largely because Georgia and Michigan are missing that year."),
+                         paste0("Drag the Year Range slider back to ", s$first_year, " to see the full history of population. Admissions and exits begin in ", s$bjs_first_year, ".")),
+                       bjs_gap_watch),
               use_card("Compare states on one measure",
                        "Main Dashboard.",
                        c("Pick a Supervision Type (for example, Probation) and an Outcome Category.",
@@ -894,12 +1196,15 @@ about_tab <- tabPanel(
                        c("Select Community Supervision, Probation, or Parole.",
                          "Compare Admissions (people coming in) with Exits (people leaving). When admissions exceed exits, the population grows.",
                          "The State and National Dashboards show Population, Admissions, and Exits side by side."),
-                       paste0("Admissions and exits are BJS estimates available only for 2012–", s$bjs_year, ", and some states are missing in some years.")),
+                       paste0("Admissions and exits are BJS estimates available only for ", s$bjs_first_year, "–", s$bjs_year, ", and some states are missing in some years.")),
               use_card("Compare supervision with incarceration",
                        "Main Dashboard.",
                        c("Set Supervision Type to Prison, Jail Custody, Jail Jurisdiction, or Total Incarceration.",
                          "Switch to Probation or Parole with the same year and Per Capita setting to compare."),
-                       "Jail data cover only 20 to 26 of 51 jurisdictions from 2020 on, and six states have no 2024 prison figure. Prefer 2019 or earlier for nationwide comparisons."),
+                       paste0("Jail data cover only ", fmt_range(cov_jail$late_n), " of ", n_jur, " jurisdictions from ", jail_gap_start, " on",
+                              if (length(cov_prison$late_years) == 1) paste0(", and ", num_word(length(cov_prison$late_states)), " states have no ",
+                                                                             cov_prison$late_years, " prison figure"),
+                              ". Prefer ", cov_jail$last_full, " or earlier for nationwide comparisons.")),
               use_card("Download the data for your own analysis",
                        "Main Dashboard, Table section at the bottom.",
                        c("Set the filters for the slice you need.",
@@ -939,20 +1244,19 @@ about_tab <- tabPanel(
           tags$ul(
             tags$li(lp_html(
               bold("Prison Policy Initiative (PPI): "),
-              "Population counts for every year, state, and supervision type from 1978 to ", s$latest_year,
+              "Population counts for every year, state, and supervision type from ", s$first_year, " to ", s$latest_year,
               ". This builds on, corrects, and extends existing BJS data — including harmonizing ",
               "definitions across states and years, and filling gaps where BJS data were missing, ",
               "inconsistent, or known to be inaccurate. Full details are in PPI's briefing: ",
-              link_to("https://www.prisonpolicy.org/blog/2026/06/02/supervision/",
-                      "Probation and parole trends by state: A look back at the data on 'alternatives' to incarceration"),
+              link_to(ppi_report_url, ppi_source$report_title),
               ". The underlying spreadsheet is available ",
-              link_to("https://www.prisonpolicy.org/data/incarceration_supervision_by_state_1978_2024.xlsx",
+              link_to(paste0("https://www.prisonpolicy.org/data/", ppi_source$workbook),
                       "from PPI"), ".")),
             tags$li(lp_html(
               bold("Bureau of Justice Statistics (BJS): "),
               "Admissions and exits come directly from the BJS Probation and Parole annual surveys and ",
-              "are available for 2012 through ", s$bjs_year, ". Because of this, the State and National ",
-              "Dashboards open on 2012 so that admissions, exits, and population cover the same period. ",
+              "are available for ", s$bjs_first_year, " through ", s$bjs_year, ". Because of this, the State and National ",
+              "Dashboards open on ", s$bjs_first_year, " so that admissions, exits, and population cover the same period. ",
               "More at ", link_to("https://bjs.ojp.gov/", "bjs.ojp.gov"), "."))
           ),
           
@@ -965,11 +1269,11 @@ about_tab <- tabPanel(
                         "checks them against state and local sources, including state agency data and public ",
                         "records. Where BJS's figures were missing, inconsistent, or contradicted by a state's ",
                         "own records, PPI replaced them, or removed them and interpolated between neighboring ",
-                        "years. It made corrections to historical data for 21 states.")),
+                        "years. It made corrections to historical data for ", ppi_source$states_corrected, " states.")),
               p(lp_html("The full reasoning, state-by-state notes, and a table of which states were corrected are in ",
                         "PPI's report, ", link_to(ppi_report_url,
-                                                  "Probation and parole trends by state: A look back at the data on 'alternatives' to incarceration"),
-                        " (Jacob Kang-Brown, Prison Policy Initiative, June 2, 2026). The table below summarizes the ",
+                                                  ppi_source$report_title),
+                        " (", ppi_source$report_author, ", Prison Policy Initiative, ", ppi_report_cite_day, "). The table below summarizes the ",
                         "main problems the report documents. The examples and figures in it come from PPI's report, ",
                         "not from this dashboard's own analysis."))),
           simple_table(ppi_vs_bjs_df),
@@ -1007,12 +1311,13 @@ about_tab <- tabPanel(
                     "Community supervision and prison counts are generally year-end, while jail counts are ",
                     "generally mid-year. Comparing types in the same year therefore mixes reference dates."),
             tags$li(strong("Incarceration data have gaps. "),
-                    "See the coverage table under Data Dictionary. In particular, jail data since 2020 cover ",
-                    "only about half of states."),
+                    "See the coverage table under Data Dictionary. In particular, jail data since ", jail_gap_start, " cover ",
+                    "only ", jail_share_txt, " of states."),
             tags$li(strong("Admissions and exits can have missing state-years. "),
-                    "Some BJS figures are imputed to account for non-reporting states and years, and a few ",
-                    "states are missing outright (for example, Georgia and Michigan in 2016). A one-year dip ",
-                    "in a national series may be a reporting artifact; check the Table and Data Source column."),
+                    paste0("Some BJS figures are imputed to account for non-reporting states and years, and a few ",
+                           "states are missing outright",
+                           if (!is.null(bjs_gap_example_txt)) paste0(" (for example, ", bjs_gap_example_txt, ")"),
+                           ". A one-year dip in a national series may be a reporting artifact; check the Table and Data Source column.")),
             tags$li(strong("People on both probation and parole are counted twice "),
                     "in the Community Supervision total."),
             tags$li(strong("Definitions vary across states. "),
@@ -1214,7 +1519,7 @@ ui <- navbarPage("National Supervision Data Dashboard",
                          inputId = "year_range_state",
                          label = "Year Range",
                          choices = available_years,
-                         selected = c(2012, last(available_years)),
+                         selected = c(landing_stats$bjs_first_year, last(available_years)),
                          grid = FALSE,
                          dragRange = TRUE,
                          force_edges = TRUE
@@ -1250,7 +1555,7 @@ ui <- navbarPage("National Supervision Data Dashboard",
                          inputId = "year_range_national",
                          label = "Year Range",
                          choices = available_years,
-                         selected = c(2012, last(available_years)),
+                         selected = c(landing_stats$bjs_first_year, last(available_years)),
                          grid = FALSE,
                          dragRange = TRUE,
                          force_edges = TRUE
